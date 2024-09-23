@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>請求書$FORM{Common.title}</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<script type="text/javascript" src="__base_system_path__/seminar_base/shared/themes/$FORM{theme}/js/time.js"></script>
+<link rel="stylesheet" type="text/css" href="__base_system_path__/seminar_base/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_system_path__/seminar_base/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript" src="__base_system_path__/seminar_base/shared/js/jquery-3.3.1.min.js"></script>
+<script>
+var smp$form = {
+  file_name     : 'sb_bill_plain',  // 変更禁止.
+  virtual_name  : '',  // 変更可.
+  virtual_path  : '',  // 変更可.
+  js_submit_btn : '',  // 変更可.
+  is_admin      : '$FORM{is_admin}',
+  is_authorized : '$FORM{is_authorized}',
+  seminar_id    : '$FORM{Seminar.id}',
+  flow_id       : '$FORM{application_flow_master_id}',
+  lang_id       : '$FORM{current_language_master_id}',
+  step_name     : '$FORM{step_name}'
+};
+</script>
+</head>
+<body class="sb_bill_plain">
+$FORM{check_cookie}
+<div id="ss_wrapperBill">
+  <div align="right"> Forum : $FORM{Seminar.title}<br>
+    Date : $FORM{Seminar.start_day}<br>
+    Venue : $FORM{Seminar.hall_name}<br />
+    <br />
+    <script language='JavaScript'>
+<!--
+  //--DHTML対応なら時計レイヤ－作成
+  if(document.layers||document.all||document.getElementById)
+    document.write('<DIV ID="clock" CLASS="clockstyle"></DIV>')
+//-->
+</script>
+    請求書番号 A-$FORM{Transaction.id} </div>
+  <div id="ss_VisitorData"> 貴社名　$FORM{Now.VisitorData.company_name} <br />
+    <br />
+    お申込者　$FORM{Now.VisitorData.name1}&nbsp;$FORM{Now.VisitorData.name2} 様 </div>
+  <div align="right">
+  株式会社ＸＸＸＸＸＸＸ<br />
+  登録番号：T1234XXXXXXX<br />
+    $FORM{Seminar.reference_name} <br />
+    $FORM{Seminar.reference_address}<br />
+    TEL：$FORM{Seminar.reference_tel}／FAX：$FORM{Seminar.reference_fax}<br />
+  </div>
+  <div id="ss_bill">
+    <div class="ss_sei">ご請求書</div>
+    <div class="ss_sen">&nbsp;</div>
+  </div>
+  <div id="ss_onchu"> $FORM{Now.VisitorData.company_name} 　御中 </div>
+  <div id="ss_kingaku">
+    <div>*下記の通り、ご請求申し上げます。</div>
+    <table border="0" cellspacing="0" cellpadding="0" class="ss_table">
+      <tr>
+        <td>ご請求金額（税込）</td>
+        <td><div align="right">&yen;$FORM{Price.sum}</div></td>
+      </tr>
+    </table>
+  </div>
+  ＜内容＞
+  <TABLE id="ss_naiyou_table" cellSpacing="0" cellPadding="0" border="0">
+    <TR>
+      <TH class="ss_border_left">内容</TH>
+      <TH width="50">数量</TH>
+      <TH width="80">単価</TH>
+      <TH width="80">金額</TH>
+    </TR>
+    $FORM{record} $FORM{discount_record}
+    <TR>
+      <TD colspan="2" class="ss_border_none">&nbsp;</TD>
+      <TD><div align="right">小計</div></TD>
+      <TD><div align="right">&yen;$FORM{Price.sumWithoutTax}</div></TD>
+     </TR>
+      <TR>
+      <TD colspan="2" class="ss_border_none">&nbsp;</TD>
+      <TD><div align="right">消費税(10%)</div></TD>
+      <TD><div align="right">&yen;$FORM{Price.tax}</div></TD>
+     </TR>
+      <TR>
+      <TD colspan="2" class="ss_border_none">&nbsp;</TD>
+      <TD><div align="right">合計</div></TD>
+      <TD><div align="right">&yen;$FORM{Price.sum}</div></TD>
+     </TR>
+  </TABLE>
+  <div align="right">
+    <div id="ss_hurikomi">
+      <div class="ss_table"> ＜振込先＞<br />
+        <br />
+        $FORM{Seminar.reference_note}</div>
+    </div>
+  </div>
+</div>
+</BODY>
+</HTML>

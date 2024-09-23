@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$FORM{'name'}様のマイページ$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}$FORM{Common.body_header}
+<div id="ss_wrapper">
+  <div id="ss_contentsNoMenu">
+    <div id="ss_myPageBtn">
+      <ul>
+        <li class="ss_no"><a href="/public/mypage/top/plain">マイページHOME</a></li>
+        <li><a href="/public/mypage/authdata/add">ログイン情報変更</a></li>
+        <li><a href="/public/mypage/personal/add">登録個人情報の確認・変更</a></li>
+        <li class="ss_myPageLogout">
+          <input type="button" value="ログアウト" onclick="location='/public/logout?return_path=%2fpublic%2fmypage'">
+        </li>
+      </ul>
+    </div>
+    <div class="ss_heading01">
+      <h1>$FORM{'name'}様のマイページ</h1>
+      <!-- /.heading01 -->
+    </div>
+    <div class="ss_title_h3">
+      <h3>お申し込み履歴 一覧</h3>
+    </div>
+    <div class="ss_preBox">
+      <p>お申し込みの内容をご確認いただけます。</p>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ss_myPageTable">
+        <tr>
+          <th class="ss_seminartitle">お申し込み内容</th>
+          <th class="ss_application">変更 / キャンセル</th>
+          <th class="ss_ticket">受講票</th>
+        </tr>
+        $FORM{application_transaction_list}
+      </table>
+      <ul class="ss_note">
+        <li>※キャンセル可能なお申し込みに関しては、表内の[変更/キャンセル]欄に「お申し込み内容をキャンセル」リンクが表示されますので、リンクをクリックして「キャンセル確認ページ」でお申し込み内容のキャンセルを行ってください。</li>
+        <li>※内容の変更が可能なお申し込みに関しては、表内の[変更/キャンセル]欄に「お申し込み内容の変更」リンクが表示されますので、リンクをクリックしてお申し込みフォームでお申し込み内容を変更して再申し込みを行ってください。</li>
+        <li>※[お申し込み内容]欄に「<img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/dl_icon.gif" alt="ダウンロード可能"> アイコン」がある場合は、「<img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/dl_icon.gif" alt="ダウンロード可能"> アイコン」をクリックして資料をダウンロードいただけます。</li>
+        <li>※[受講票]欄に「受講票を出力」リンクがある場合は、リンクをクリックして「受講票ページ」より受講票の出力が可能です。</li>
+      </ul>
+    </div>
+    <div class="ss_title_h3">
+      <h3>資料ダウンロード</h3>
+    </div>
+    <div class="ss_preBox">
+      <p>下記の[ダウンロード]欄にある「<strong>ダウンロード</strong>」リンクより資料をダウンロードいただけます。</p>
+      $FORM{'document_list'} </div>
+    <div class="ss_title_h3">
+      <h3>アンケート</h3>
+    </div>
+    <div class="ss_preBox">
+      <p>下記の「<strong>回答する</strong>」ボタンをクリックしてアンケートにご回答ください。</p>
+      $FORM{'enquete_list'} </div>
+  </div>
+</div>
+$FORM{Common.body_footer}
+</body>
+</html>

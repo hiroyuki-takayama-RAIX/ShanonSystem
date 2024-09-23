@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow,noarchive">
+<title>$FORM{mfa.page_title}$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}
+<!-- ヘッダーSTA -->
+$FORM{Common.body_header}
+<!-- ヘッダーEND -->
+<!-- ラッパーSTA -->
+<div id="ss_wrapper">
+  <form action="/public/admin/mfasetting?code=$FORM{code}" autocomplete="off" method="post" name="login">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <div id="ss_contentsNoMenu">
+      <div class="ss_heading01">
+        <h1>$FORM{mfa.content_header}</h1>
+        <!-- /.heading01 -->
+      </div>
+      <div class="ss_txtBoxCen">
+        $FORM{message}
+      </div>
+      <div class="ss_preBox">
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" id="ss_loginTable">
+          <tr id="mfa_qrcode">
+            <th>$FORM{mfa.label_qrcode}</th>
+            <td><img width="200" height="200" src="data:image/png;base64,$FORM{mfa.qrcode}" alt="QR CODE"/></td>
+          </tr>
+          <tr>
+            <th>$FORM{mfa.label_authcode}</th>
+            <td><input name="second_auth_code" type="text" tabindex="2"/></td>
+          </tr>
+        </table>
+        $FORM{hidden_params}
+      </div>
+      <div class="ss_inputBoxCen" id="ss_loginButton">
+        <input id="btnSubmit" type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_sub2.gif" name="Submit1" value="送信" tabindex="3" onclick="this.disabled=true;this.form.submit();" />
+      </div>
+    </div>
+  </form>
+</div>
+<!-- ラッパーEND -->
+$FORM{Common.body_footer}
+
+<script type="text/javascript">
+  let submit_btn = document.getElementById('btnSubmit');
+  let loginTable = document.getElementById('ss_loginTable');
+  if ('$FORM{mfa.has_no_session}' == '1') {
+    submit_btn.remove();
+    loginTable.remove();
+  }
+</script>
+</body>
+</html>

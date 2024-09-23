@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* ===== Color Map ===== */
+/*    gray    -> pink    */
+/* 1. \9E9E9E -> #E85581 */
+/* 2. \666666 -> #C52052 */
+/* 3. \ECECEC -> #F9DFEB */
+/* 4. \CECECE -> #F2ABC3 */
+
+/* CSS Document */
+
+h3{
+	background:#C52052;
+	border-bottom:1px solid #C52052;
+	border-top:1px solid #C52052;
+	border-right:1px solid #C52052;
+}
+.line{
+	border-left:1px solid #C52052;
+}

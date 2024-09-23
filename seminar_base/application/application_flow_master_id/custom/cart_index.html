@@ -1,0 +1,22 @@
+        <div class="ss_heading03">
+          <h3>お申込内容の確認</h3>
+          <!-- /.heading03 -->
+        </div>
+        <p>お申し込みいただく内容をご確認の上、「<strong>次へ</strong>」ボタンをクリックしてください。</p>
+        <div class="ss_form">
+          <table border="1" cellpadding="0" cellspacing="0" width="100%" class="ss_cartTable">
+            <tr>
+              <th>日程</th>
+              <th>お申込内容</th>
+              <th>参加費</th>
+            </tr>
+          $FORM{record} 
+          $FORM{auto_discount} 
+          $FORM{multi_discount} 
+          $FORM{code_discount}
+          $FORM{price_fix_discount}
+          $FORM{sum} 
+          </table>
+          <p>$FORM{select_alert_message} $FORM{select_error_message}</p>
+          $FORM{input_code_discount}$FORM{cart_alert}
+        </div>

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-language" content="ja">
+<title>$FORM{title}$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<style type="text/css">
+<!--
+/*ログアウトボタンの表示非表示*/
+#ss_contents table td .ss_login_0 {
+	display:none;
+}
+#ss_contents table td .ss_login_1 {
+	text-align:right;
+}
+-->
+</style>
+<!--start_day_displayTr:::::$FORM{start_day_display}-->
+<!--hall_nameTr:::::$FORM{hall_name}-->
+<!--price_displayTr:::::$FORM{price_display}-->
+<!--limit_user_num_displayTr:::::$FORM{limit_user_num_display}-->
+<!--target_userTr:::::$FORM{target_user}-->
+<!--sponsorTr:::::$FORM{sponsor}-->
+<!--co_sponsorTr:::::$FORM{co_sponsor}-->
+<!--supportTr:::::$FORM{support}-->
+<!--detailTr:::::$FORM{detail}-->
+<!--memoTr:::::$FORM{memo}-->
+<script type="text/javascript" src="__base_seminar_path__/shared/js/dispElements.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}
+<div id="ss_stage">$FORM{Common.body_header}
+  <div id="ss_container">
+    <div id="ss_contents">
+      <div class="ss_heading01">
+        <h1>$FORM{title}</h1>
+        <!-- /.heading01 -->
+      </div>
+      <h2><span>$FORM{sub_title}</span></h2>
+      <div class="ss_section"> $FORM{header_image_with_tag}
+        <p class="ss_summary">$FORM{summary}</p>
+        $FORM{detail_image_with_tag}
+        <!-- /.section -->
+      </div>
+      <div class="ss_heading03">
+        <h3>開催概要</h3>
+        <!-- /.heading03 -->
+      </div>
+      <div class="ss_section">
+        <table class="ss_tableStyle01 ss_nm" border="1" cellspacing="0">
+          <tbody>
+            <tr id="start_day_displayTr">
+              <th>日時</th>
+              <td>$FORM{start_day_display} 　$FORM{application_start_day_display}</td>
+            </tr>
+            <tr id="hall_nameTr">
+              <th>会場</th>
+              <td><span class="ss_hole"><span class="ss_nm">
+                <script type="text/javascript">var url = "$FORM{hall_map_url_normal}";if (url != "") document.write('<a href="$FORM{hall_map_url_normal}" target="_blank">$FORM{hall_name}</a>');else document.write("$FORM{hall_name}");</script>
+                </span> <br>
+                $FORM{hall_zipcode} $FORM{prefecture_master_id_to_name} $FORM{hall_address}<br>
+                $FORM{hall_tel}</span> $FORM{hole_image_with_tag} <span class="ss_hallnote">$FORM{hall_note}</span>
+              </td>
+            </tr>
+            <tr id="price_displayTr">
+              <th>参加費</th>
+              <td>$FORM{price_display}&nbsp;</td>
+            </tr>
+            <tr id="limit_user_num_displayTr">
+              <th>定員</th>
+              <td>$FORM{limit_user_num_display}　$FORM{application_icon}</td>
+            </tr>
+            <tr id="target_userTr">
+              <th>対象</th>
+              <td>$FORM{target_user}&nbsp;</td>
+            </tr>
+            <tr id="sponsorTr">
+              <th>主催</th>
+              <td>$FORM{sponsor}</td>
+            </tr>
+            <tr id="co_sponsorTr">
+              <th>共催</th>
+              <td>$FORM{co_sponsor}</td>
+            </tr>
+            <tr id="supportTr">
+              <th>協賛</th>
+              <td>$FORM{support}</td>
+            </tr>
+            <tr id="detailTr">
+              <th>内容</th>
+              <td>$FORM{detail}&nbsp;</td>
+            </tr>
+            <tr id="memoTr">
+              <th>備考</th>
+              <td>$FORM{memo}&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="ss_button">
+          <tr>
+            <td colspan="2">はじめての方は「<strong>申込</strong>」ボタンをそのままクリックしてお申し込みください。ログインIDをお持ちの方は一度ログインしてから「<strong>申込</strong>」ボタンをクリックしてお申し込みください。
+              <div class="ss_login_$FORM{is_authorized}">
+                <input type="button" value="ログアウト"  onclick="location='/public/logout?return_path=/public/seminar/view/$FORM{id}'">
+              </div></td>
+          </tr>
+          <tr>
+            <td class="ss_text">$FORM{application_link}</td>
+            <td>$FORM{item_login}</td>
+          </tr>
+        </table>
+        <div class="ss_seminarSpeaker">
+          <table class="ss_tableStyle01 ss_nm" border="1" cellspacing="0">
+            $FORM{speaker}
+          </table>
+        </div>
+        <!-- /.section -->
+      </div>
+      <h4 class="ss_contactBox">お問合わせ</h4>
+      <div class="ss_contactBox">
+        <h5>$FORM{reference_name}　$FORM{reference_person_in_charge}</h5>
+        <div class="ss_innerList">
+          <div>$FORM{reference_tel}　$FORM{reference_fax}</div>
+          <div>$FORM{reference_email_normal}</div>
+          <div>$FORM{reference_address}</div>
+          <div>$FORM{reference_note}</div>
+        </div>
+        <!-- /contactBox -->
+      </div>
+      <div class="ss_pageNavi">
+        <!-- /.pageNavi -->
+      </div>
+      <!-- /#ss_contents -->
+    </div>
+    <!-- /#container -->
+  </div>
+  $FORM{Common.body_footer}
+  <!-- /#stage -->
+</div>
+</body>
+</html>

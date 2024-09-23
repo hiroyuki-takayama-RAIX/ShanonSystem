@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無効なURL</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}  $FORM{Common.body_header}
+<!-- ラッパーSTA -->
+<div id="ss_wrapper">
+  <!-- ヘッダーSTA -->
+  <!-- ヘッダーEND -->
+  <div id="ss_contentsNoMenu">
+    <div class="ss_heading01">
+      <h1>無効なURL</h1>
+      <!-- /.heading01 -->
+    </div>
+    <form action="/public/unsubscribe/" method="post" name="login">
+      $FORM{Common.all_vars}
+      <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <div class="ss_txtBoxCen"><strong>アクセスされたURLは無効なURLです。</strong></div>
+      <p class="txtmleft">・お使いのメールソフトによっては、一行の表示文字数が長い場合に一定の文字数で改行される恐れがございます。URLが途中で改行されていると、URLとして認識されず正しいアクセスができないため、一度URLの途中改行を削除して、インターネットブラウザのアドレスバーに直接URLを貼り付けてから再度アクセスしてみてください。</p>
+      <p class="txtmtop">・ご登録のE-mailアドレス宛てにお送りしたメールが一定期間経過し、メールに記載されているURLの有効期限が切れている恐れがございます。再度メールを請求してください。</p>
+      <div id="ss_close">
+        <p><a href="javascript:window.close()">×閉じる</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+$FORM{Common.body_footer}
+</body>
+</html>

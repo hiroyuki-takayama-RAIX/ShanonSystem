@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* ===== Color Map2 ==== */
+/*    red     -> red     */
+/* 1. \CC0000 -> #CC0000 */
+/* 2. \C52052 -> #C52052 */
+/* 3. \E54D4D -> #E54D4D */
+
+/* CSS Document */
+
+h3{
+	background:#CC0000;
+	border-bottom:1px solid #CC0000;
+	border-top:1px solid #CC0000;
+	border-right:1px solid #CC0000;
+}
+.line{
+	border-left:1px solid #CC0000;
+}

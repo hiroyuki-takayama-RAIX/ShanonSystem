@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* ===== Color Map2 ==== */
+/*    red     -> olivedrab */
+/* 1. \CC0000 -> #70A100 */
+/* 2. \C52052 -> #70A100 */
+/* 3. \E54D4D -> #70A100 */
+
+/* CSS Document */
+
+h3{
+	background:#70A100;
+	border-bottom:1px solid #70A100;
+	border-top:1px solid #70A100;
+	border-right:1px solid #70A100;
+}
+.line{
+	border-left:1px solid #70A100;
+}

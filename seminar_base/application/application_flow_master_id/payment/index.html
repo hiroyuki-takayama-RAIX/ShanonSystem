@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-language" content="ja">
+<title>$FORM{Seminar.title} - 支払方法入力$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<style type="text/css">
+#ss_contents li.ss_input span.ss_txtRedB {
+    font-size:95%;
+}
+</style>
+<script type="text/javascript">
+<!--
+$FORM{additional_js}
+//-->
+</script>
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+
+$FORM{gmo_js}
+<script>
+<!--
+  window.onload = function() {
+    var credit_no_pass = document.getElementById('credit_no_pass').value;
+    if(credit_no_pass == 0){
+      document.getElementById('pass_table').style.display = 'block';
+    } else {
+      document.getElementById('no_pass_table').style.display = 'block';
+    }
+  }
+//-->
+</script>
+<script>
+<!--
+// 多言語に対応するには、以下項目名の定義・項目連結文字・エラーメッセージを多言語タグ内で言語別に定義してください。
+// 項目名の定義
+var CARD_NO = 'カード番号';
+var EXPIRE_DATE = '有効期限';
+var SECURITY_CODE_NAME = 'セキュリティコード';
+// 項目連結文字
+var SEPARATOR = '、';
+// エラーメッセージ
+// エラーメッセージは適切な文言に編集してください。${items}は埋め込み文字です。
+var MESSAGE_FORMATS = {
+    E_CONSISTENCY : 'カード情報が入力されています。クレジットカード決済を選択してください。',
+    E_REQUIRED : '${items}に未入力の部分があります。',
+    E_NUMERIC : '${items}は半角数字で入力してください。',
+    E_EXPIRE_DATE_MONTH : '有効期限（MM）は01から12で入力してください。',
+    E_EXPIRE_DATE_YEAR : '有効期限（YY）は2桁で入力してください。',
+    E_SECURITY_CODE_LENGTH : 'セキュリティコードの桁数が違います。（エラーコード : ${items})', //GMOのみ
+    E_CARD_INVALID : '入力したカード情報は当システムではご利用できません。（エラーコード : ${items} )',
+    E_SYSTEM : 'システムエラー。管理者にお問い合わせください。（エラーコード : ${items} )'
+};
+
+/**
+* 配列かどうか判定する
+* Array.isArray(object)はECMA Script 5以上でないと使えないので、独自で実装する。
+* @param obj : 判定したい変数
+*/
+function isArray(obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+}
+
+/**
+* メッセージ文言を作成する
+* @param message_code : MESSAGE_FORMATS のkey
+* @param items : MESSAGE_FORMATS のメッセージ内の${items}を置換する変数
+*/
+function build_message(message_code, items){
+    param = '';
+    if(isArray(items)){
+        param = items.join(SEPARATOR);
+    } else {
+        param = items;
+    }
+    return  MESSAGE_FORMATS[message_code].replace(/\$\{items\}/g,param);
+}
+
+/**
+* メッセージ文言をカード情報上部に表示する。
+* @param message : メッセージ内容のHTML文字列
+*/
+function alert_message_above_credit_table(message) {
+    error_message = document.getElementById('error_message_div');
+    if (error_message === null) {
+        alert(message);
+        return;
+    }
+    error_message.textContent = message;
+    error_message.style.display = "block";
+}
+
+function prompt_veritrans_alert(code) {
+    var msg;
+    if ( code == 'missing_card_number' || code == 'invalid_card_number' || code == 'digit_check_error'
+       || code == 'invalid_security_code' || code == 'missing_security_code' ) {
+      msg = build_message('E_CARD_INVALID', code);
+    } else {
+      msg = build_message('E_SYSTEM', code);
+    }
+    alert_message_above_credit_table(msg);
+}
+
+function prompt_gmo_alert(code) {
+    var msg;
+    if ( code == '100' || code == '101' || code == '102' ) {
+      msg = build_message('E_CARD_INVALID', code);
+    } else if ( code == '122' ) {
+      msg = build_message('E_SECURITY_CODE_LENGTH', code);
+    } else {
+      msg = build_message('E_SYSTEM', code);
+    }
+    alert_message_above_credit_table(msg);
+}
+//-->
+</script>
+<script>
+<!--
+function is_integer(obj) {
+  return /^\+?\d+$/.test(obj);
+}
+
+function create_send_url() {
+  return host_url;
+}
+
+function gmo_token_callback(response) {
+   if( response.resultCode != '000' ){
+     prompt_gmo_alert(response.resultCode);
+     return false;
+   }else{
+     document.getElementById('card_number1').value = '';
+     document.getElementById('card_number2').value = '';
+     document.getElementById('card_number3').value = '';
+     document.getElementById('card_number4').value = '';
+     document.getElementById('expire_month').value = '';
+     document.getElementById('expire_year').value = '';
+     document.getElementById('security_code').value = '';
+     document.getElementById('credit_token_response').value = JSON.stringify(response.tokenObject);
+     document.forms[0].submit();
+   }
+}
+
+function check_gmo_credit_card(card_number, expire_month, expire_year, security_code) {
+   var expire,token_api_key;
+   expire_year = '20' + expire_year;
+   expire = expire_year + expire_month;
+   token_api_key = document.getElementById('token_api_key').value;
+   Multipayment.init(token_api_key);
+   Multipayment.getToken(
+     {cardno: card_number,
+      expire: expire,
+      securitycode: security_code
+     },gmo_token_callback
+   );
+   return false;
+}
+
+function check_veritrans_credit_card(card_number, expire_month, expire_year, security_code) {
+   var data = {};
+   var card_expire = expire_month + '/' + expire_year;
+   data.card_number = card_number;
+   data.card_expire = card_expire;
+   data.security_code = security_code
+   data.token_api_key = document.getElementById('token_api_key').value;
+
+   var host_url = document.getElementById('host_url').value;;
+
+   var xhr = new XMLHttpRequest();
+   xhr.open('POST', host_url, true);
+   xhr.setRequestHeader('Accept', 'application/json');
+   xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+   xhr.addEventListener('loadend', function () {
+     if (xhr.status === 0) {
+       alert_message_above_credit_table("トークンサーバーとの接続に失敗しました");
+       return;
+     }
+     var response = JSON.parse(xhr.response);
+     if (xhr.status == 200 && response.code == 'success') {
+       document.getElementById('card_number1').value = '';
+       document.getElementById('card_number2').value = '';
+       document.getElementById('card_number3').value = '';
+       document.getElementById('card_number4').value = '';
+       document.getElementById('expire_month').value = '';
+       document.getElementById('expire_year').value = '';
+       document.getElementById('security_code').value = '';
+       document.getElementById('credit_token_response').value = xhr.response;
+       document.forms[0].submit();
+     }
+     else {
+       prompt_veritrans_alert(response.code);
+       return false;
+     }
+
+   });
+   xhr.send(JSON.stringify(data));
+   return false;
+}
+
+function check_credit_card(payment_type) {
+   var credit_no_pass = document.getElementById('credit_no_pass').value;
+   if (credit_no_pass == 0) {
+     return;
+   }
+   var select_card = document.getElementById('select_card').value;
+
+   var card_number1 = document.getElementById('card_number1').value;
+   var card_number2 = document.getElementById('card_number2').value;
+   var card_number3 = document.getElementById('card_number3').value;
+   var card_number4 = document.getElementById('card_number4').value;
+
+   var expire_month = document.getElementById('expire_month').value;
+   var expire_year  = document.getElementById('expire_year').value;
+
+   var security_code = document.getElementById('security_code').value;
+
+   // 相関チェック
+   if (payment_type != 1) {
+     if (card_number1.length != 0 || card_number2.length != 0 || card_number3.length != 0 || card_number4.length != 0
+         || expire_month.length != 0 || expire_year.length != 0 || security_code.length != 0) {
+       alert_message_above_credit_table(MESSAGE_FORMATS['E_CONSISTENCY']);
+       return false;
+     } else {
+       return true;
+     }
+   }
+
+   // 単項目チェック
+   var null_items = [];
+   var message_null = '';
+   // 各項目のNULL Check
+   if (card_number1.length == 0 || card_number2.length == 0 || card_number3.length == 0 || card_number4.length == 0) {
+     null_items.push(CARD_NO);
+   }
+   if (expire_month.length == 0 || expire_year.length == 0) {
+     null_items.push(EXPIRE_DATE);
+   }
+   if (security_code.length == 0) {
+     null_items.push(SECURITY_CODE_NAME);
+   }
+   if ( null_items.length > 0 ) {
+     message_null = build_message('E_REQUIRED', null_items);
+   }
+
+   // 文字種チェック
+   var not_numeric_items = [];
+   var message_not_numeric = '';
+   if ( ( card_number1.length != 0 && !is_integer(card_number1) ) || ( card_number2.length != 0 && !is_integer(card_number2) )
+       || ( card_number3.length != 0 && !is_integer(card_number3) ) || ( card_number4.length != 0 && !is_integer(card_number4) ) ) {
+     not_numeric_items.push(CARD_NO);
+   }
+   // 文字種チェック && 数字範囲チェック
+   if ( ( expire_month.length != 0 && !is_integer(expire_month) ) || ( expire_year.length != 0 && !is_integer(expire_year) ) ) {
+     not_numeric_items.push(EXPIRE_DATE);
+   }
+   // 文字種チェック
+   if ( security_code.length != 0 && !is_integer(security_code) ) {
+     not_numeric_items.push(SECURITY_CODE_NAME);
+   }
+   if ( not_numeric_items.length > 0 ) {
+     message_not_numeric = build_message('E_NUMERIC', not_numeric_items);
+   }
+
+   var message_range_expire_date_month = '';
+   if ( expire_month.length != 0 && ( expire_month < 1 || expire_month > 12 ) ) {
+     message_range_expire_date_month = MESSAGE_FORMATS['E_EXPIRE_DATE_MONTH'];
+   }
+
+   var message_range_expire_date_year = '';
+   if ( expire_year.length != 0 && expire_year.length != 2 ) {
+     message_range_expire_date_year = MESSAGE_FORMATS['E_EXPIRE_DATE_YEAR'];
+   }
+
+   var message_array = [];
+   [message_null , message_not_numeric , message_range_expire_date_month , message_range_expire_date_year].forEach(function( value ) {
+    if( value.length > 0 ) {
+      message_array.push(value);
+    }
+   });
+   var message = message_array.join("\n").trim();
+
+   if(message.length > 0){
+     alert_message_above_credit_table(message);
+     return false;
+   }
+
+   expire_month = ( '0' + expire_month ).slice( -2 );
+   var card_number = card_number1 + card_number2 + card_number3 + card_number4;
+   if (select_card == 0) {
+     return check_gmo_credit_card(card_number, expire_month, expire_year, security_code);
+   } else if (select_card == 2)  {
+     return check_veritrans_credit_card(card_number, expire_month, expire_year, security_code);
+   } else {
+     return false;
+   }
+}
+
+function check_payment_type_master_id() {
+   var radios = document.getElementsByName("Public::Application::Payment_D__P__D_payment_type_master_id");
+   var selected_value;
+
+   for(var i = 0; i < radios.length; i++) {
+      if(radios[i].checked)
+          selected_value = radios[i].value;
+   }
+
+   return check_credit_card(selected_value);
+}
+// -->
+</script>
+$FORM{Common.head}
+</head>
+<body>
+<div style="display:none;">$FORM{_comment_out_errors}</div>
+<!-- フローエラーコメント -->
+<div id="ss_stage"> $FORM{check_cookie}
+  $FORM{Common.body_header}
+  <form action="$FORM{__baseurl__}public/application/add/$FORM{application_flow_master_id}" autocomplete="off" method="post" onsubmit="return check_payment_type_master_id();">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <div id="ss_container">
+      <div id="ss_contents">
+        <div class="ss_heading01">
+          <h1>$FORM{Seminar.title}</h1>
+          <!-- /.heading01 -->
+        </div>
+        <h2><span>$FORM{Seminar.sub_title}</span></h2>
+        <div class="ss_heading03">
+          <h3>お支払い方法選択</h3>
+          <!-- /.heading03 -->
+        </div>
+        <p>お支払い方法を下記より選択し、「<strong>次へ</strong>」ボタンをクリックしてください。<br>
+          ※クレジットカード決済を選択された方は決済に必要な情報を記入後、「次へ」ボタンをクリックしてください。</p>
+        <!-- キャンペーン概要Tableが必要な場合にコメントを外してください。
+        <div class="ss_section">
+          <table class="ss_tableStyle01 ss_nm" border="1" cellspacing="0">
+            <tr>
+              <th>内容</th>
+              <td>$FORM{Seminar.detail}&nbsp;</td>
+            </tr>
+            <tr>
+              <th>対象者</th>
+              <td>$FORM{Seminar.target_user}&nbsp;</td>
+            </tr>
+            <tr>
+              <th>日時</th>
+              <td>$FORM{Seminar.start_day_display}&nbsp;</td>
+            </tr>
+            <tr>
+              <th>会場 </th>
+              <td>
+				<p class="ss_nm">
+                  <script type="text/javascript">var url = "$FORM{Seminar.hall_map_url}";if (url != "") document.write('<a href="$FORM{Seminar.hall_map_url}" target="_blank">$FORM{Seminar.hall_name}</a>');else document.write("$FORM{Seminar.hall_name}");</script>
+                </p>
+				</td>
+            </tr>
+          </table>
+ </div>-->
+        <!-- /.section -->
+        <div class="ss_form">
+          <table width="100%" border="0" cellpadding="0" cellspacing="1" class="ss_formprivacy">
+            <tr>
+              <th>お支払い方法$FORM{notnull_name}</th>
+              <td>$FORM{payment_type_master_id}</td>
+            </tr>
+          </table>
+          <p class="ss_cardtitle"><font color="#FF0000">※</font>クレジットカードを選択された方は以下をご入力ください。</p>
+          <p>$FORM{error_message}</p>
+          <!-- クレジットカード情報をサーバーに通過する場合、pass_tableを表示します -->
+          <div id="pass_table" style="display: none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="ss_cardTable">
+            <tr>
+              <th>カード番号$FORM{notnull_card_number1}</th>
+              <td>
+              <div class="ss_cell"><ul><li class="ss_input">$FORM{card_number1}-</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input">$FORM{card_number2}-</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input">$FORM{card_number3}-</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input">$FORM{card_number4}</li></ul></div>
+              <div class="ss_msg"><span>※半角数字で入力してください。</span></div></td>
+            </tr>
+            <tr>
+              <th>有効期限$FORM{notnull_expire_month}</th>
+              <td>
+              <div class="ss_cell"><ul><li class="ss_input">$FORM{expire_month}月</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input">$FORM{expire_year}年</li></ul></div></td>
+            </tr>
+            <tr>
+              <th>名義人$FORM{notnull_name}</th>
+              <td>$FORM{name}　<span class="ss_msg">（例　TARO YAMADA)　※名と姓の間に半角スペースを入れて、半角で入力してください。</span></td>
+            </tr>
+          </table>
+          </div>
+          <!-- クレジットカード情報をサーバーに非通過する場合、no_pass_tableを表示します -->
+          <div id="no_pass_table" style="display: none;">
+            <div id="error_message_div" style="white-space: pre-wrap;color: #FF0000;font-weight: bold;display: none;"></div>
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="ss_cardTable">
+            <tr>
+              <th>カード番号<font color="#FF0000">※</font></th>
+              <td>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="card_number1" value="" size="4" maxlength="4" autocomplete="off" />-</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="card_number2" value="" size="4" maxlength="4" autocomplete="off" />-</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="card_number3" value="" size="4" maxlength="4" autocomplete="off" />-</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="card_number4" value="" size="4" maxlength="4" autocomplete="off" /></li></ul></div>
+              <div class="ss_msg"><span>※半角数字で入力してください。</span></div></td>
+            </tr>
+            <tr>
+              <th>有効期限<font color="#FF0000">※</font></th>
+              <td>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="expire_month" value="" size="2" maxlength="2" autocomplete="off" />月</li></ul></div>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="expire_year" value="" size="2" maxlength="2" autocomplete="off" />年</li></ul></div>
+            </tr>
+            <tr>
+              <th>セキュリティコード<font color="#FF0000">※</font></th>
+              <td>
+              <div class="ss_cell"><ul><li class="ss_input"><input type="text" id="security_code" value="" size="4" maxlength="4" autocomplete="off" /></li></ul></div>
+              </td>
+            </tr>
+          </table>
+          </div>
+          <p class="ss_cardMessage">※決済には、ベリトランス社のオンライン決済システムを用いております。<br>
+            クレジットカード情報は直接カード会社に送信され、事務局側には残りません。<br>
+            なお、弊社ではSSL通信を利用しておりますので、カード番号は暗号化されて送信されます。<br>
+            VISA / Master Card / American Express / Diners / JCB のクレジットカードがご利用できます。 <br>
+            ※American Expressをご利用の方は、カード番号の最後の桁を3桁で入力してください。<br>
+          </p>
+        </div>
+        <div class="ss_btnArea">
+          <p>$FORM{back_to_before_step}
+            <input type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_next_o.gif" alt="次へ" />
+          </p>
+          <!-- /.btnArea -->
+        </div>
+        <h4 class="ss_contactBox">お問合わせ</h4>
+        <div class="ss_contactBox">
+          <h5>$FORM{Seminar.reference_name}　$FORM{reference_person_in_charge}</h5>
+          <div class="ss_innerList">
+            <div>$FORM{Seminar.reference_tel}　$FORM{Seminar.reference_fax}</div>
+            <div>$FORM{Seminar.reference_email}</div>
+            <div>$FORM{Seminar.reference_address}</div>
+            <div>$FORM{Seminar.reference_note}</div>
+          </div>
+          <!-- /contactBox -->
+        </div>
+        <!-- /#ss_contents -->
+      </div>
+      <!-- /#container -->
+    </div>
+    <input type="hidden" name="selected_action" value="" />
+    <input type="hidden" name="cart_delete" value="">
+    <input type="hidden" name="action" value="$FORM{action}" />
+    <input type="hidden" name="serialkey" value="$FORM{serialkey}" />
+    <input type="hidden" name="select_card" id="select_card" value="$FORM{select_card}" />
+    <input type="hidden" name="credit_no_pass" id="credit_no_pass" value="$FORM{credit_no_pass}" />
+    <input type="hidden" name="token_api_key" id="token_api_key" value="$FORM{token_api_key}" />
+    <input type="hidden" name="host_url" id="host_url" value="$FORM{host_url}" />
+    <input type="hidden" name="Public::Application::Payment_D__P__D_credit_token_response" id="credit_token_response" value="" />
+  </form>
+  $FORM{Common.body_footer}
+  <!-- /#stage -->
+</div>
+$FORM{Common.page_vars}
+</body>
+</html>

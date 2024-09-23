@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>管理者ログイン</title>
+  <link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+  <script type="text/javascript" src="/static/js/visitor_util.js"></script>
+  <script type="text/javascript">
+    $FORM{additional_js}
+  </script>
+  $FORM{Common.head}
+</head>
+<body>
+  $FORM{check_cookie}
+  $FORM{Common.body_header}
+  <div id="ss_wrapper">
+    <!-- ラッパーSTA -->
+    <form name="form1" action="/public/sso/login/admin/do" autocomplete="off" method="post">
+      $FORM{Common.all_vars}
+      <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <div id="ss_contentsNoMenu">
+        <div class="ss_heading01">
+          <h1>アカウント</h1>
+          <!-- /.heading01 -->
+        </div>
+        <div class="ss_txtBoxCen">
+          <script type="text/javascript">
+            if ('$FORM{message}'=='<font color="red">入力されたIDとパスワードの情報は登録されていません</font>' ) {
+              document.write('ログインIDとパスワードを入力し「ログイン」ボタンをクリックしてください。<br><font color="red">ご入力いただいたログインIDとパスワードの情報に誤りがあるか、ご登録がされておりません。<br>ログインIDとパスワードをもう一度お確かめの上、正しくご入力ください。</font>');
+            } else {
+              document.write('ログインIDとパスワードを入力し「ログイン」ボタンをクリックしてください。');
+            }
+          </script>
+        </div>
+        <div class="ss_preBox">
+          <table width="100%" border="0" cellspacing="1" cellpadding="0" id="ss_loginTable">
+            <tr>
+              <th>ログインID</th>
+              <td>$FORM{login_id}</td>
+            </tr>
+            <tr>
+              <th>パスワード</th>
+              <td>$FORM{login_password}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="ss_inputBoxCen">
+          <input type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_login.gif" name="Submit1" value="ログイン" tabindex="3" />
+        </div>
+        <div id="ss_passLost">
+          <a href="/public/application/add/1">会員登録はコチラ</a>
+        </div>
+        <div id="ss_passLost">
+          <a href="/public/reminder/add" target="_blank">パスワードをお忘れの方はこちら</a>
+        </div>
+      </div>
+      $FORM{'hidden_params'}
+    </form>
+  </div>
+  <!-- ラッパーEND -->
+  $FORM{Common.body_footer}
+</body>
+</html>

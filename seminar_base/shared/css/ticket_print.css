@@ -1,0 +1,15 @@
+@charset "utf-8";
+/*---- print STA ----*/
+#ss_wrapper {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#ss_Printbtn {
+	display:none;
+}
+#ss_close {
+	display:none;
+}
+/*---- print END ----*/

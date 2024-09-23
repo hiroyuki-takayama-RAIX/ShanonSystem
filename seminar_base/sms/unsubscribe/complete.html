@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SMS許可設定変更完了</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}  $FORM{Common.body_header}
+<!-- ラッパーSTA -->
+<div id="ss_wrapper">
+  <!-- ヘッダーSTA -->
+  <!-- ヘッダーEND -->
+  <div id="ss_contentsNoMenu">
+    <div class="ss_heading01">
+      <h1>SMS許可設定変更完了</h1>
+      <!-- /.heading01 -->
+    </div>
+    <form action="/public/sms/unsubscribe/" autocomplete="off" method="post" name="login">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <div class="ss_txtBoxCen">SMS許可設定を変更しました。</div>
+    </form>
+    <div id="ss_close">
+      <p><a href="javascript:window.close()">×閉じる</a></p>
+    </div>
+  </div>
+</div>
+<!-- ラッパーEND -->
+$FORM{Common.body_footer}
+</body>
+</html>

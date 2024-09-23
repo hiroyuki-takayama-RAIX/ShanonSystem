@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-language" content="ja">
+<title>キャンペーン一覧 $FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/calendar.js"></script>
+<style type="text/css">
+<!--
+/*ログアウトボタンの表示非表示*/
+#ss_contents table td .ss_login_0 {
+	display:none;
+}
+#ss_contents table td .ss_login_1 {
+	text-align:right;
+}
+-->
+.ss_idOver{
+    display:none;
+}
+</style>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+$FORM{Common.head}
+<link   rel="stylesheet"       charset="utf-8" href="__base_seminar_path__/shared/css/smoothness/jquery-ui-1.13.2.css" media="all" />
+<link   rel="stylesheet"       charset="utf-8" href="__base_seminar_path__/shared/css/smoothness/jquery-ui-shanon.css" media="all" />
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery-ui-1.13.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/gcalholidays.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery-ui-shanon.js"></script>
+<script type="text/javascript" src="__base_seminar_path__/shared/js/jquery-migrate-3.3.1.js"></script>
+<script type="text/javascript">
+(function($) {
+$(function(){
+  var selector = "[name='start_day_start'],[name='start_day_end']";
+  $(selector).datepicker();
+});
+})(jQuery);
+</script>
+</head>
+<body>
+$FORM{check_cookie}
+<div id="ss_stage"> $FORM{Common.body_header}
+  <div id="ss_container">
+    <div id="ss_contents">
+      <div><img src="$FORM{Common.logofile_3}">
+        <!-- /.heading01 -->
+      </div>
+      <h2><span>$FORM{sub_title}</span></h2>
+      $FORM{item_topics}
+      $FORM{item_search}
+      $FORM{item_seminar}
+      $FORM{item_document}
+      <div class="ss_pageNavi">
+        <!-- /.pageNavi -->
+      </div>
+      <!-- /#ss_contents -->
+    </div>
+    <!-- /#container -->
+  </div>
+  $FORM{Common.body_footer}
+  <!-- /#stage -->
+</div>
+</body>
+</html>

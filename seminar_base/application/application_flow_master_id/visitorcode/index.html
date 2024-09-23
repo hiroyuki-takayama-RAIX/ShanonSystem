@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-language" content="ja">
+<title>$FORM{Seminar.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript">
+<!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+$FORM{Common.head}
+</head>
+<body>
+<div style="display:none;">$FORM{_comment_out_errors}</div>
+<!-- フローエラーコメント -->
+<div id="ss_stage"> $FORM{check_cookie}
+  $FORM{Common.body_header}
+ <form action="$FORM{__baseurl__}public/application/add/$FORM{application_flow_master_id}" method="post" name="application">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <div id="ss_container">
+      <div id="ss_contents">
+        <div class="ss_heading01">
+          <h1>$FORM{Seminar.title}</h1>
+          <!-- /.heading01 -->
+        </div>
+        
+        <p>以下の内容でよろしければ、「<strong>登録する</strong>」ボタンをクリックしてください。<br>
+          ※内容を修正する場合は、「戻る」ボタンをクリックし、該当画面まで戻って修正してください。</p>
+        
+        <!-- /.section -->
+        <div class="ss_form"> 
+        
+          <p><font color="red">*</font>印の項目は入力必須項目です。必ず入力してください。</p>
+              <span class="errorText">$FORM{error_message}</span> <br />
+              <table width="450" border="0" cellspacing="10" cellpadding="0" id="list-text-mypage">
+                <tr>
+                  <th scope="row">申込者CODE(全)$FORM{notnull_visitordata_code_all_seminar}</th>
+                  <td>$FORM{visitordata_code_all_seminar}</td>
+                </tr>
+                <tr>
+                  <th scope="row">申込者CODE(個)$FORM{notnull_visitordata_code_seminar}</th>
+                  <td>$FORM{visitordata_code_seminar}</td>
+                </tr>
+                <tr>
+                  <th scope="row">請求CODE(全)$FORM{notnull_transaction_code_all_seminar}</th>
+                  <td>$FORM{transaction_code_all_seminar}</td>
+                </tr>
+                <tr>
+                  <th scope="row">請求CODE(個)$FORM{notnull_transaction_code_seminar}</th>
+                  <td>$FORM{transaction_code_seminar}</td>
+                </tr>
+              </table>
+        
+        </div>
+        <h4 class="ss_contactBox">お問合わせ</h4>
+        <div class="ss_contactBox">
+          <h5>$FORM{Seminar.reference_name}　$FORM{reference_person_in_charge}</h5>
+          <div class="ss_innerList">
+            <div>$FORM{Seminar.reference_tel}　$FORM{Seminar.reference_fax}</div>
+            <div>$FORM{Seminar.reference_email}</div>
+            <div>$FORM{Seminar.reference_address}</div>
+            <div>$FORM{Seminar.reference_note}</div>
+          </div>
+          <!-- /contactBox -->
+        </div>
+        <!-- /#ss_contents -->
+      </div>
+      <!-- /#container -->
+    </div>
+      <input type="hidden" name="cart_delete" value="">
+      <input type="hidden" name="action" value="$FORM{action}" />
+      <input type="hidden" name="serialkey" value="$FORM{serialkey}" />
+     </form>
+  $FORM{Common.body_footer}
+  <!-- /#stage -->
+</div>
+$FORM{Common.page_vars}
+</body>
+</html>
+

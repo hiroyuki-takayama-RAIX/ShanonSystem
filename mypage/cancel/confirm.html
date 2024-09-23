@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$FORM{'name'}様のマイページ$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript" src="__base_seminar_path__/shared/js/jquery.min.js"></script>
+<script type="text/javascript" src="__base_seminar_path__/shared/js/jquery-migrate-3.3.1.js"></script>
+<script type="text/javascript">
+(function($){
+$(function(){
+  $("form").on( "submit", function(){
+    $("input[name='all_cancel']").prop("disabled",true);
+  });
+});
+})(jQuery);
+</script>
+$FORM{Common.head}
+</head>
+<style type="text/css">
+
+.ss_myPageTable td {
+    text-align:left;
+	padding-left:10px;
+}
+</style>
+
+<body>
+$FORM{check_cookie}$FORM{Common.body_header}
+<div id="ss_wrapper">
+  <div id="ss_contentsNoMenu">
+    <div id="ss_myPageBtn">
+      <ul>
+        <li><a href="/public/mypage/top/plain">マイページHOME</a></li>
+        <li><a href="/public/mypage/authdata/add">ログイン情報変更</a></li>
+        <li class="ss_no"><a href="/public/mypage/personal/add">登録個人情報の確認・変更</a></li>
+        <li class="ss_myPageLogout">
+          <input type="button" value="ログアウト" onclick="location='/public/logout?return_path=%2fpublic%2fmypage'">
+        </li>
+      </ul>
+    </div>
+    <div class="ss_heading01">
+      <h1>$FORM{'name'}様のマイページ</h1>
+      <!-- /.heading01 -->
+    </div>
+    <div class="ss_title_h3">
+       <h3>お申し込みキャンセル</h3>
+    </div>
+    <div class="ss_txtBoxCen">キャンセルする内容を確認し、「<strong>キャンセル</strong>」ボタンをクリックしてください。<br>
+      処理を取りやめる場合は、「<strong>戻る</strong>」ボタンをクリックしてください。</div>
+    <form action="/public/mypage/cancel/do_cancel" method="post">
+      $FORM{Common.all_vars}
+      <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <div class="ss_preBox" style="width:719px;">$FORM{application_history}
+<script type="text/javascript">
+<!--
+  if( $("td.session_title").html() == "&nbsp;" ) {
+    // キャンペーンの場合
+    $("th.tagname").html("お申し込み内容");
+    $("th.session_title").hide();
+    $("td.session_title").each( function(){$(this).hide()} );
+  } else {
+    // サブキャンペーンの場合
+    $("th.session_title").html("お申し込み内容");
+    $("th.tagname").hide();
+    $("td.tagname").each( function(){$(this).hide()} );
+  }
+-->
+</script>
+      </div>
+      <div class="ss_inputBoxCen"> <a href="/public/mypage"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_back_o.gif" value="戻る" border="0"/></a>&nbsp;&nbsp;
+        <input type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_cancel.gif" name='all_cancel' value='キャンセル' >
+      </div>
+      <input type="hidden" name="application_transaction_master_id" value="$FORM{application_transaction_master_id}" />
+      <input type="hidden" name="visitor_data_id" value="$FORM{visitor_data_id}" />
+      <input type="hidden" name="serialkey" value="$FORM{serialkey}" />
+    </form>
+
+  </div>
+</div>
+$FORM{Common.body_footer}
+<script language="JavaScript">
+    var inputs = document.getElementsByTagName("INPUT");
+    for (var i = 0, l = inputs.length; i < l; i++) {
+        var input = inputs[i];
+        if (input.type == "checkbox")
+            input.checked = "checked";
+    }
+</script>
+</body>
+</html>

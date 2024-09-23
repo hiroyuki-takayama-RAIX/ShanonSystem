@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ニュース一覧$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}
+<a name="top" id="ss_top"></a>
+<!-- ヘッダーSTA -->
+$FORM{Common.body_header}
+<!-- ヘッダーEND -->
+<!-- ラッパーSTA -->
+<div id="ss_wrapper">
+  <div id="ss_menuBox"> $FORM{item_login} $FORM{item_search} $FORM{item_category} $FORM{item_news} </div>
+  <div id="ss_contents">
+    <h2>ニュース一覧</h2>
+    <form action="/public/menu/news/list" method="post" name="search_news" id="ss_search_news">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <div class="ss_preBox"> $FORM{search}
+        <p>&nbsp;</p>
+        <ul>
+          <li class="ss_txtMini"><strong>表示：　</strong>$FORM{navigate}：
+            $FORM{page_num}　
+            <input name="submit" type="submit" value="移動" />
+          </li>
+        </ul>
+        <p>&nbsp;</p>
+      </div>
+      <h3>検索結果</h3>
+      <div class="ss_preBox">
+        <ul>
+          $FORM{table}
+        </ul>
+      </div>
+      <div class="ss_goTop"><a href="#top">&uarr;ページトップ</a></div><div class="ss_both"></div>
+    </form>
+  </div>
+</div>
+$FORM{Common.body_footer}
+<!-- フッターEND -->
+</body>
+</html>

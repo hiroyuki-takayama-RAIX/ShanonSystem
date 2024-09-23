@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-language" content="ja">
+<title>検索結果 $FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<style type="text/css">
+<!--
+/*ログアウトボタンの表示非表示*/
+#ss_contents table td .ss_login_0 {
+	display:none;
+}
+#ss_contents table td .ss_login_1 {
+	text-align:right;
+}
+.ss_idOver{
+    display:none;
+}
+-->
+.ss_idOver{
+    display:none;
+}
+</style>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+$FORM{Common.head}
+<link   rel="stylesheet"       charset="utf-8" href="__base_seminar_path__/shared/css/smoothness/jquery-ui-1.13.2.css" media="all" />
+<link   rel="stylesheet"       charset="utf-8" href="__base_seminar_path__/shared/css/smoothness/jquery-ui-shanon.css" media="all" />
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery-ui-1.13.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/gcalholidays.js"></script>
+<script type="text/javascript" charset="utf-8" src="__base_seminar_path__/shared/js/jquery-ui-shanon.js"></script>
+<script type="text/javascript" src="__base_seminar_path__/shared/js/jquery-migrate-3.3.1.js"></script>
+<script type="text/javascript">
+(function($) {
+$(function(){
+  $("input.btn[value='選択']").hide();
+  $("[name='start_day_start'],[name='start_day_end']").datepicker();
+});
+})(jQuery);
+</script>
+</head>
+<body>
+<div id="ss_stage">$FORM{check_cookie}$FORM{Common.body_header}
+  <div id="ss_container">
+    <div class="ss_backlink"><a href="/public">≪キャンペーン一覧へ戻る</a></div>
+    <div id="ss_contents">
+      <div> <img src="$FORM{Common.logofile_3}">
+        <!-- /.heading01 -->
+      </div>
+      <h2><span>$FORM{sub_title}</span></h2>
+      $FORM{search}
+      <div class="ss_heading03">
+        <h3>検索結果</h3>
+        <!-- /.heading03 -->
+      </div>
+      <div id="ss_cusBox">
+        <ul>
+          <li class="ss_txtMini">【&nbsp;<strong>$FORM{max_num}</strong>件中<strong>&nbsp;$FORM{start_num}</strong>&nbsp;-&nbsp;<strong>$FORM{end_num}</strong>件を表示&nbsp;】</li>
+          <li class="ss_txtMini">1ページの表示件数：$FORM{page_list}</li>
+          <li class="ss_txtMini">ページ移動：$FORM{page_num}</li>
+          <li style="float:none; border:none;">&nbsp;</li>
+        </ul>
+        </div>
+      <table border="0" cellspacing="0" cellpadding="0" id="ss_searchTable">
+        <tr>
+          <th class="ss_category">種別</th>
+          <th class="ss_title">タイトル</th>
+          <th class="ss_day">日程</th>
+          <th class="ss_place" >場所</th>
+        </tr>
+        $FORM{table}
+      </table>
+      <div class="ss_backlink"><a href="/public">≪キャンペーン一覧へ戻る</a></div>
+      <!-- /#ss_contents -->
+    </div>
+    <!-- /#container -->
+  </div>
+  $FORM{Common.body_footer}
+  <!-- /#stage -->
+</div>
+</body>
+</html>

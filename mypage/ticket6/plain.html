@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>受講票$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ticket.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ticket_color.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ticket_print.css" media="print">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{Common.body_header}
+<div id="ss_Printbtn">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+	  <div> 右の[印刷する]ボタンをクリックすることにより、下記の枠線部分を印刷することが可能です。 </div>
+        <div class="ss_boldred"> 当日はこの受講票で受付確認をいたしますので、忘れずにご持参ください。</div>
+          <div class="ss_boldred"> 受講票を印刷の際は、印刷プレビューで出力を100%にて出力願います。</div></td>
+      <td><div align="right">
+          <input name="print" value="種類6印刷する" onclick="javascript:window.print()" type="button" />
+        </div></td>
+    </tr>
+  </table>
+</div>
+<div id="ss_wrapper">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="22%"><img src="$FORM{'barcord_path'}"/ width="200px" height="60px"></td>
+      <td width="58%"><div class="ss_companyname"> $FORM{'visitor_company_name'}</div>
+        <div class="ss_name">$FORM{'visitor_name1'} $FORM{'visitor_name2'} 様</div></td>
+      <td width="20%"><div align="right" class="ss_list_title">受講票</div></td>
+    </tr>
+  </table>
+  <div id="ss_record_table">
+    <p>※こちらの受講票で受付の確認をさせていただきますので、当日は忘れずにお持ちください。</p>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <th class="day">日程</th>
+        <th class="seminar">お申込内容</th>
+      </tr>
+      $FORM{'record'}
+    </table>
+  </div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="ss_table">
+    <tr>
+      <td width="48%" valign="top"><div class="ss_h3_decolation">
+          <h3>ご登録内容</h3>
+        </div>
+        <div>$FORM{'visitor_company_name'}</div>
+        <div>$FORM{'visitor_division'}</div>
+        <div>$FORM{'visitor_position'}</div>
+        <div>$FORM{'visitor_name1'} $FORM{'visitor_name2'}</div>
+        <div class="ss_h3_decolation">
+          <h3>注意事項</h3>
+        </div>
+        <div>$FORM{'Seminar.notes'}</div>
+        <div class="ss_h3_decolation">
+          <h3>お問い合わせ</h3>
+        </div>
+        <div class="ss_bold">$FORM{'Seminar.reference_name'}</div>
+        <div>$FORM{'Seminar.reference_person_in_charge'}</div>
+        <div>$FORM{'Seminar.reference_email'}</div>
+        <div>$FORM{'Seminar.reference_tel'} $FORM{'Seminar.reference_fax'}</div>
+        <div>$FORM{'Seminar.reference_address'}</div>
+        <div>$FORM{'Seminar.reference_note'}</div></td>
+      <td width="2%">&nbsp;</td>
+      <td width="48%" valign="top"><div class="ss_h3_decolation">
+          <h3>会場 / 受付</h3>
+        </div>
+        <div class="ss_map"><img src="$FORM{hole_image}" alt="アクセス地図" width="300"/></div>
+        <div class="ss_bold">$FORM{'Seminar.hall_name'}</div>
+        <div>$FORM{'Seminar.hall_zipcode'}$FORM{'Seminar.prefecture_master_id'}$FORM{'Seminar.hall_address'}</div>
+        <div>$FORM{'Seminar.hall_tel'}</div>
+        <div class="ss_access">
+          <h4>アクセス</h4>
+          <div>$FORM{'Seminar.hall_note'}</div>
+        </div></td>
+    </tr>
+  </table>
+</div>
+<div id="ss_close">
+  <p><a href="javascript:window.close()">×閉じる</a></p>
+</div>
+</body>
+</html>

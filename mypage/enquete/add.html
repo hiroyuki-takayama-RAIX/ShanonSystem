@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$FORM{'name'}様のマイページ$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript" src="/static/js/functions.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}$FORM{Common.body_header}
+<div id="ss_wrapper">
+  <div id="ss_contentsNoMenu">
+    <div id="ss_myPageBtn">
+      <ul>
+        <li><a href="/public/mypage/top/plain">マイページHOME</a></li>
+        <li><a href="/public/mypage/authdata/add">ログイン情報変更</a></li>
+        <li><a href="/public/mypage/personal/add">登録個人情報の確認・変更</a></li>
+        <li class="ss_myPageLogout">
+          <input type="button" value="ログアウト" onclick="location='/public/logout?return_path=%2fpublic%2fmypage'">
+        </li>
+      </ul>
+    </div>
+    <div class="ss_heading01">
+      <h1>$FORM{'name'}様のマイページ</h1>
+      <!-- /.heading01 -->
+    </div>
+    <div class="ss_txtBoxCen">お手数ではございますが、アンケートにご協力をお願いいたします。<br>
+      以下の項目に必要事項をご記入後、「<strong>回答</strong>」ボタンをクリックしてください。<br>
+      <span class="ss_txtRed"><strong>*</strong></span>印の項目は入力必須項目です。必ず入力してください。</div>
+    <form action="/public/mypage/enquete/add" method="post" $FORM{form_enctype}>
+      $FORM{Common.all_vars}
+      <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <table width="100%" border="0" cellspacing="1" cellpadding="0" id="ss_userTable">
+        $FORM{created_body}
+      </table>
+      <div class="ss_inputBoxCen"> $FORM{'submit'} </div>
+      <input type="hidden" name="history_id" value="$FORM{enquete_history_id}">
+      <input type="hidden" name="enquete_template_master_id" value="$FORM{enquete_template_master_id}">
+      <input type="hidden" name="action" value="$FORM{action}" />
+    </form>
+  </div>
+</div>
+$FORM{Common.body_footer}
+</body>
+</html>

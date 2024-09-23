@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* ===== Color Map3 ==== */
+/*    white   -> white   */
+/* 1. \009933 -> #009933 */
+/* 2. \DCFFDE -> #DCFFDE */
+/* 3. \60C21E -> #60C21E */
+
+/*---- Universal Reset STA ----*/
+/*---- Universal Reset END ----*/
+
+/*---- header STA ----*/
+#ss_header {
+	border-bottom-color: #009933;
+}
+/*---- header END ----*/
+
+/*---- ticket STA ----*/
+.ss_list_title {
+	color:#009933;
+}
+#ss_record_table table th {
+	background: #DCFFDE;
+}
+h3 {
+	border-left:5px solid  #60C21E;
+}
+/*---- ticket END ----*/

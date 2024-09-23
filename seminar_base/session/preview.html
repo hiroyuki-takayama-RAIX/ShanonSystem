@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>詳細情報$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body id="ss_narrowBody">
+$FORM{check_cookie}
+<div id="ss_headerPop"><img src="$FORM{Common.logofile_1}"></div>
+<div id="ss_stagePop">
+  <div id="ss_containerPop">
+    <div id="ss_contents">
+      <div class="ss_code_day"><span class="ss_codebox">$FORM{code}</span><span class="ss_startday"> $FORM{start_day_display}$FORM{hall_name}</span></div>
+      <div class="ss_titleback">
+        <div class="ss_title">$FORM{title}</div>
+        <div class="ss_subtitle">$FORM{sub_title}</div>
+      </div>
+      <div>
+        <div class="ss_heading03">
+          <h3>概要</h3>
+        </div>
+        <div class="ss_detailPop">
+          <p>$FORM{summary}</p>
+        </div>
+        <div class="ss_heading03">
+          <h3>講演者情報</h3>
+        </div>
+        <div class="ss_photoPop">$FORM{hole_image_with_tag}</div>
+        <div class="ss_summaryPop">$FORM{detail}</div>
+        <div class="ss_speakerPop">$FORM{speaker}</div>
+        <div class="ss_notesPop">$FORM{notes}</div>
+      </div>
+      <!-- /#ss_contents -->
+      <p class="ss_closePop"> <a href="javascript:self.close()">×閉じる</a> </p>
+    </div>
+    <!-- /#container -->
+  </div>
+  <!-- /#stage -->
+</div>
+</body>

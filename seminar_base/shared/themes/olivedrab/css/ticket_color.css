@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* ===== Color Map2 ==== */
+/*    red     -> olivedrab */
+/* 1. \CC0000 -> #70A100 */
+/* 2. \C52052 -> #70A100 */
+/* 3. \E54D4D -> #70A100 */
+
+/*---- Universal Reset STA ----*/
+/*---- Universal Reset END ----*/
+
+/*---- header STA ----*/
+#ss_header {
+	border-bottom-color: #70A100;
+}
+/*---- header END ----*/
+
+/*---- ticket STA ----*/
+.ss_list_title {
+	color:#70A100;
+}
+#ss_record_table table th {
+	background: #EEEEEE;
+}
+h3 {
+	border-left:5px solid  #70A100;
+}
+/*---- ticket END ----*/

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>会場退場受付</title>
+<style>
+.custom_list {
+	width:300px;
+	height:60px;
+	font-size:30px;
+	padding:0 20px
+}
+#btnC {
+	height:200px;
+	font-size: 100px;
+	font-weight: bold;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/attendance.css" media="all">
+
+<script type="text/javascript">
+function hideButton(obj, user_master_id){
+  var users = document.getElementsByName("user");
+  for( var i = 0; i < users.length; i++){
+    if(users[i] == obj) {
+      var btn_submit = document.getElementById('btnC');
+      btn_submit.style.display = '';
+      btn_submit.value = obj.value;
+    }
+  }
+
+  document.getElementById("selected_user_master_id").value = user_master_id;
+  document.getElementById('dup_users').style.display       = 'none';
+  document.getElementById('btnReturn').style.display       = '';
+}
+
+function displayButton(){
+  var users = document.getElementsByName("user");
+  for( var i = 0; i < users.length; i++){
+      users[i].style.display='';
+  }
+
+  document.getElementById('dup_users').style.display = '';
+  document.getElementById('btnC').style.display      = 'none';
+  document.getElementById('btnReturn').style.display = 'none';
+
+  var txt_Message = document.getElementById('MessageText');
+  txt_Message.innerHTML = '$FORM{err_msg}';
+
+}
+
+</script>
+
+</head>
+<body class="lead overviewPage">
+<div id="wrapper">
+  <table border="0" cellpadding="0" cellspacing="0" id="headerTable">
+    <tr>
+      <th><a href="/attendance/menu"><img src="__base_seminar_path__/shared/img/back.gif" width="300" height="60" border="0"></a></th>
+    </tr>
+  </table>
+  <form action="/attendance/exitmatching/add" method="post" name="form1">
+    <div id="contentsArea">
+      <div class="centerbox">会場退場受付</div>
+      <p>
+        <div class="id">受講票ID/会場ID：$FORM{user_master_id}</div>
+      </p>
+      <div class="txtRed">お客様の名前を確認し、正しければ名前をクリックしてください。</div>
+      <div class="txtRed" id="MessageText">$FORM{err_msg}</div>
+      <input name="submit_base" value="" id="btnC" type="submit" style="display:none; height:140px; font-size:80px; font-weight:bold; padding:20px; margin:15px 0px 15px 0px;">
+      <ul id="dup_users">
+        $FORM{users}
+      </ul>
+      <div align="left">
+        <input name="return" value="バーコード入力画面に戻る" id="btnReturnTop" type="button" style="height:40px; width:200px; padding:10px;" onClick="location.replace('/attendance/exitmatching/add');" />
+        <input name="return" value="選択画面に戻る" id="btnReturn" type="button" style="display:none; height:40px; width:200px; padding:10px;" onClick="displayButton()" />
+      </div>
+      <input type="hidden" name="selected_user_master_id" id="selected_user_master_id" value="">
+    </div>
+
+    <input type="hidden" name="action" value="Attendance::ExitMatching/input">
+    <input type="hidden" name="Attendance::ExitMatching_D__P__D_user_master_id" value="$FORM{user_master_id}">
+    $FORM{Common.all_vars}
+  </form>
+</div>
+</body>
+</html>

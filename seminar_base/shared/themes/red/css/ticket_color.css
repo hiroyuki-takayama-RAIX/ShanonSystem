@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* ===== Color Map2 ==== */
+/*    red     -> red     */
+/* 1. \CC0000 -> #CC0000 */
+/* 2. \C52052 -> #C52052 */
+/* 3. \E54D4D -> #E54D4D */
+
+/*---- Universal Reset STA ----*/
+/*---- Universal Reset END ----*/
+
+/*---- header STA ----*/
+#ss_header {
+	border-bottom-color: #CC0000;
+}
+/*---- header END ----*/
+
+/*---- ticket STA ----*/
+.ss_list_title {
+	color:#E54D4D;
+}
+#ss_record_table table th {
+	background: #EEEEEE;
+}
+h3 {
+	border-left:5px solid  #CC0000;
+}
+/*---- ticket END ----*/

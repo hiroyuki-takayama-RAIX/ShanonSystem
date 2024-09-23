@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>会場受付(会場IDマッピングあり)</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/attendance.css" media="all">
+<script type="text/javascript" src="/static/js/base.js"></script>
+
+<script type="text/javascript">
+function set_status(){
+    var status = document.getElementById('status');
+    var img = document.getElementById('status_img');
+    if(status.value == 2){
+        img.src='__base_seminar_path__/shared/img/ng.jpg';
+    }
+		else {
+	    img.src='__base_seminar_path__/shared/img/spacer.gif';
+	}
+
+}
+
+function disable_alert(){
+ document.getElementById("status_alert").style.display = "none";
+ document.getElementById("waiting").style.display = "block";
+}
+
+function submit_attendance(){
+  document.getElementsByName('submit_btn')[0].disabled = true;
+  document.getElementsByName('form1')[0].submit();
+}
+
+var JIKAN = 700; /*点滅の間隔。単位ミリ秒。1000で1秒。NN4には反映されません。*/
+
+var mode=0;
+function peachblink(){
+mode=1-mode;
+if(document.getElementById){
+if (mode == 1){ document.getElementById("blink").style.visibility='hidden'; }
+else { document.getElementById("blink").style.visibility='visible'; }
+}
+else if(document.all) {
+if (mode == 1){ document.all("blink").style.visibility='hidden'; }
+else { document.all("blink").style.visibility='visible'; }
+}
+setTimeout("peachblink()",JIKAN);
+}
+</script>
+</head>
+<body class="lead overviewPage" onLoad="document.getElementsByName('Attendance::MatchingMapping_D__P__D_anonymous_id')[0].focus(); peachblink();">
+<div id="wrapper">
+  <table border="0" cellpadding="0" cellspacing="0" id="headerTable">
+    <tr>
+      <th><a href="/attendance/menu"><img src="__base_seminar_path__/shared/img/back.gif" width="300" height="60" border="0"></a></th>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <form action="$FORM{__baseurl__}attendance/matchingmapping/add" method="post" name="form1" autocomplete="off" onSubmit="disable_alert();">
+    <div id="contentsArea2">
+      <div class="centerbox">会場受付(会場IDマッピングあり)</div>
+      <div class="id">受講票ID：$FORM{user_master_id}
+        <div>会場ID：$FORM{orig_anonymous_id}</div>
+      </div>
+      <p>
+        <input type="text" name="Attendance::MatchingMapping_D__P__D_anonymous_id"  onfocus="removeClassName(document.getElementById('input_alert'), 'visible'); removeClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'hidden');" class="barcode" onblur="removeClassName(document.getElementById('input_alert'), 'hidden'); addClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'visible');"  />
+      </p>
+      <div class="input_btn">
+        <button type="button" id="btnA" name="submit_btn" onclick="submit_attendance();">送信</button>
+      </div>
+      <input type="submit" name="submit_base" value="" id="btn_submit" style="visibility:hidden;width:0;height:0;">
+      <div class="" id="input_alert">フォーカスがはずれています。<br>
+        テキストフィールドをクリックしてください。</div>
+      <div class="txtRed" id="status_alert"><img src="__base_seminar_path__/shared/img/spacer.gif" id="status_img">
+        <div ID="blink">$FORM{user_master_id_error}$FORM{anonymous_id_error}</div>
+        <div class="txtBlue">$FORM{attended_user_data}</div>
+        <div class="txtBlue">会場IDを入力してください</div>
+      </div>
+      <div id="waiting">認証中です。しばらくお待ちください。</div>
+    </div>
+    $FORM{date_regist}
+    <input type="hidden" name="action" value="$FORM{action}">
+    <input type="hidden" name="status1" value="$FORM{status}" id="status">
+    <script type="text/javascript">
+set_status();
+</script>
+    $FORM{Common.all_vars}
+  </form>
+</div>
+</body>
+</html>

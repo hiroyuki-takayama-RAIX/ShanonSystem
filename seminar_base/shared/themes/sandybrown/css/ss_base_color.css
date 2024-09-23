@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* ===== Color Map ===== */
+/*    gray    -> sandybrown */
+/* 1. \9E9E9E -> #E59055 */
+/* 2. \666666 -> #C55420 */
+/* 3. \ECECEC -> #F9E9DF */
+/* 4. \CECECE -> #EFC6AB */
+
+/*---- Universal Reset STA ----*/
+/*---- Universal Reset END ----*/
+
+
+/*---- System use STA ----*/
+h4.ss_contactBox {
+	background-color: #E59055;
+}
+/*---- System use END ----*/
+
+
+/*---- header STA ----*/
+/*---- header END ----*/
+
+
+/*---- footer STA ----*/
+#ss_footer {
+	border-top:3px double #C55420;
+}
+/*---- footer END ----*/
+
+
+/*---- application base STA ----*/
+#ss_contents div.ss_heading01 {
+	background:transparent url('../img/heading01_bg_2.gif') repeat-x left top;
+}
+/*---- application base END ----*/
+
+
+/*---- stepArea STA ----*/
+/*---- stepArea END ----*/
+
+
+/*---- seminar preview STA ----*/
+#ss_contents th {
+	background-color: #F9E9DF;
+}
+#ss_contents div.ss_heading03 {
+	background-image: url('../img/h3.gif');
+}
+#ss_contents div.ss_heading03 h3 {
+	border-left-color: #C55420;
+}
+#ss_contents .ss_hole a {
+	background:url('../img/l_allow.gif') no-repeat left;
+}
+#ss_contents table.ss_loginTable th {
+	background: #E59055;
+}
+#ss_contents table.ss_logoutTable th {
+	background: #E59055;
+}
+/*---- seminar preview END ----*/
+
+
+/*---- timetable STA ----*/
+#ss_contents table.ss_timetable th.ss_title, #ss_contents table.ss_timetable td.ss_title {
+	background: #F9E9DF;
+}
+#ss_contents table.ss_timetable td div.ss_code span.ss_codebox {
+	background: #C55420;
+}
+/*---- timetable Matrixtimetable STA ----*/
+/*---- timetable Matrixtimetable END ----*/
+/*---- timetable END ----*/
+
+
+/*---- session STA ----*/
+#ss_containerPop .ss_titleback {
+	background-color: #F9E9DF;
+}
+#ss_containerPop .ss_codebox {
+	background: #C55420;
+}
+/*---- session END ----*/
+
+
+/*---- cart STA ----*/
+/*---- cart END ----*/
+
+
+/*---- user STA ----*/
+#ss_contents .ss_form table {
+	border-top-color: #EFC6AB;
+	border-bottom-color: #EFC6AB;
+}
+#ss_contents .ss_form .ss_formprivacy th {
+	background-color: #EFC6AB;
+}
+#ss_contents .ss_form .ss_formprivacy td {
+	background-color: #F9E9DF;
+}
+
+/*---- user END ----*/
+
+
+/*---- enquete STA ----*/
+#ss_contents .ss_form table.ss_enquete {
+	border-top-color: #EFC6AB;
+	border-bottom-color: #EFC6AB;
+}
+#ss_contents .ss_form .ss_enquete th {
+	background-color: #EFC6AB;
+}
+#ss_contents .ss_form .ss_enquete th.ss_enq {
+	background-color: #EFC6AB;
+}
+#ss_contents .ss_form .ss_enquete td {
+	background-color: #F9E9DF;
+}
+/*---- enquete END ----*/
+
+
+/*---- payment STA ----*/
+/*---- payment END ----*/
+
+
+/*---- billing STA ----*/
+/*---- billing END ----*/
+
+
+/*---- confirm STA ----*/
+#ss_contents .ss_form p.ss_confTitle {
+	border-left:6px double #C55420;
+}
+/*---- confirm END ----*/
+
+
+/*---- complete STA ----*/
+/*---- complete END ----*/
+
+
+/*---- bill STA ----*/
+/*---- bill END ----*/
+
+
+/*---- system base STA ----*/
+#ss_contentsNoMenu div.ss_heading01 {
+	background:transparent url('../img/heading01_bg_2.gif') repeat-x left top;
+}
+#ss_userTable {
+	border-top:1px solid #EFC6AB;
+	border-bottom:1px solid #EFC6AB;
+}
+#ss_userTable th {
+	background: #EFC6AB;
+}
+#ss_userTable td {
+	background: #F9E9DF;
+}
+#ss_loginTable {
+	border-top:1px solid #EFC6AB;
+	border-bottom:1px solid #EFC6AB;
+}
+#ss_loginTable th {
+	background: #EFC6AB;
+}
+#ss_loginTable td {
+	background: #F9E9DF;
+}
+/*---- system base END ----*/
+
+
+/*---- exception(terminate) STA ----*/
+/*---- exception(terminate) END ----*/
+
+
+/*---- mypage STA ----*/
+#ss_myPageBtn li a {
+	background:url('../img/menu_arrow.gif') no-repeat left;
+}
+#ss_myPageBtn li a:hover, #ss_myPageBtn li a:active, #ss_myPageBtn li a:focus {
+	background:url('../img/menu_arrow_on.gif') no-repeat left;
+}
+#ss_contentsNoMenu div.ss_title_h3 {
+	background-image: url('../img/h3.gif');
+}
+#ss_contentsNoMenu h3 {
+	border-left-color: #C55420;
+}
+.ss_myPageTable a {
+	background:url('../img/l_allow.gif') no-repeat left;
+}
+.ss_myPageTable .ss_download a, .ss_myPageTable .download a {
+	background:url('../img/dl_icon.gif') no-repeat left;
+}
+.ss_myPageTable td.ss_bk a {
+	background:url('../img/external.gif') no-repeat right;
+}
+/*---- mypage cancel STA ----*/
+/*---- mypage cancel END ----*/
+/*---- mypage END ----*/
+
+
+/*---- top seminar menu STA ----*/
+#ss_cusBox li {
+	border-right-color: #E59055;
+}
+#ss_downTable .ss_down a {
+	background:url('../img/dl_icon.gif') no-repeat left;
+}
+/*---- top seminar menu END ----*/

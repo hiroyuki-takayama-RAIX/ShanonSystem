@@ -1,0 +1,12 @@
+<div></div>
+<div id="presence_info" style="display: inline-block;">
+  滞在人数管理機能
+  <table>
+    <tr><td style="text-align: right;">滞在人数：</td><td style="text-align: left;">$FORM{Presence.count}（$FORM{Presence.percentage}）</td></tr>
+    <tr><td style="text-align: right;">入場制限人数：</td><td style="text-align: left;">$FORM{Presence.restrict_count}</td></tr>
+    <tr><td style="text-align: right;">制限解除人数：</td><td style="text-align: left;">$FORM{Presence.restrict_release_count}</td></tr>
+    <tr><td style="text-align: right;">制限状態：</td><td style="text-align: left;">$FORM{Presence.restrict_status}</td></tr>
+    <tr><td style="text-align: right;">最終更新時間：</td><td style="text-align: left;">$FORM{Presence.updated_at}</td></tr>
+  </table>
+  <a id="presence_info_refresh" href="/attendance/ssattendance/add">滞在人数情報更新</a>
+</div>

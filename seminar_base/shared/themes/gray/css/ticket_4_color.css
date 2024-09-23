@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* ===== Color Map ===== */
+/*    gray    -> gray    */
+/* 1. #9E9E9E -> #9E9E9E */
+/* 2. #666666 -> #666666 */
+/* 3. #ECECEC -> #ECECEC */
+/* 4. #CECECE -> #CECECE */
+
+/* CSS Document */
+
+h3{
+	background:#666666;
+	border-bottom:1px solid #666666;
+	border-top:1px solid #666666;
+	border-right:1px solid #666666;
+}
+.line{
+	border-left:1px solid #666666;
+}

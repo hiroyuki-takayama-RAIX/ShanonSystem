@@ -1,0 +1,431 @@
+@charset "utf-8";
+/* ===== Color Map3 ==== */
+/*    white   -> white   */
+/* 1. \009933 -> #009933 */
+/* 2. \DCFFDE -> #DCFFDE */
+/* 3. \60C21E -> #60C21E */
+
+/*---- Universal Reset STA ----*/
+th font {
+	color:#000000;
+}
+/*---- Universal Reset END ----*/
+
+
+/*---- System use STA ----*/
+h4.ss_contactBox {
+	padding:4px 14px;
+	color:#000000;
+	background-color:#FFFFFF;
+}
+div.ss_contactBox {
+	background-color:#FFFFFF;
+}
+/*---- System use END ----*/
+
+
+/*---- header STA ----*/
+/*---- header END ----*/
+
+
+/*---- footer STA ----*/
+#ss_footer {
+	border-top:3px double #CCCCCC;
+}
+/*---- footer END ----*/
+
+
+/*---- application base STA ----*/
+#ss_contents div.ss_heading01 {
+	margin-bottom:1.5em;
+	padding: 0px;
+}
+#ss_contents div.ss_heading01 h1 {
+	border-left: 6px solid #CCCCCC;
+	border-right: 6px solid #CCCCCC;
+	clear: both;
+	color: #000000;
+	display: block;
+	font-size: 1.4em;
+	letter-spacing: 2px;
+	line-height: 1.4;
+	margin: 0;
+	background-color: #FFFFFF;
+	background-repeat: repeat-y;
+	background-position: left top;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+}
+/*---- application base END ----*/
+
+
+/*---- stepArea STA ----*/
+/*---- stepArea END ----*/
+
+
+/*---- seminar preview STA ----*/
+#ss_contents th, #ss_contents td {
+	border-width:0px 1px 1px 0px;
+}
+#ss_contents th {
+	background-color: #FFFFFF;
+	font-weight: bold;
+	color: #000000;
+}
+#ss_contents div.ss_heading03 {
+	background-image: url('../img/h3.gif');
+}
+#ss_contents div.ss_heading03 h3 {
+	border-left-style: solid;
+	border-left-color: #CCCCCC;
+}
+#ss_contents table.ss_tableStyle01 th {
+	font-weight: bold;
+	color: #000000;
+}
+#ss_contents .ss_hole a {
+	background:url('../img/l_allow.gif') no-repeat left;
+}
+#ss_contents table.ss_button {
+	background:#FFFFFF;
+}
+#ss_contents table.ss_loginTable {
+	border:1px solid #CCCCCC;
+}
+#ss_contents table.ss_loginTable th {
+	background-color: #E5E5E5;
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	font-weight: bold;
+}
+#ss_contents table.ss_logoutTable th {
+	background: #9E9E9E;
+}
+#ss_contents table.ss_logoutTable {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: none;
+	border-right: none;
+}
+#ss_contents table.ss_logoutTable th {
+	background: #E5E5E5;
+	font-weight: bold;
+	color: #000000;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+#ss_contents table.ss_logoutTable td {
+	border-right:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+/*---- seminar preview END ----*/
+
+
+/*---- timetable STA ----*/
+#ss_contents .ss_form table.ss_timetable {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: none;
+	border-right: none;
+}
+#ss_contents .ss_form table.ss_timetable th {
+	background: #FFFFFF;
+	color: #000000;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+#ss_contents table.ss_timetable th.ss_title, #ss_contents table.ss_timetable td.ss_title {
+	background: #FFFFFF;
+	color: #000000;
+}
+#ss_contents table.ss_timetable td div.ss_code span.ss_codebox {
+	background: #999999;
+}
+/*---- timetable Matrixtimetable STA ----*/
+#ss_contents .ss_form table.ss_Mtimetable {
+	border-top:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-right:none;
+	border-bottom:none;
+}
+#ss_contents .ss_form table.ss_Mtimetable th {
+	color:#666666;
+}
+#ss_contents .ss_form table.ss_Mtimetable td {
+	border-width:0px 1px 1px 0px;
+}
+#ss_contents table.ss_Mtimetable th.ss_blue {
+	color:#666666;
+}
+#ss_contents table.ss_Mtimetable th.ss_green {
+	color:#666666;
+}
+#ss_contents table.ss_Mtimetable th.ss_yellow {
+	color:#666666;
+}
+#ss_contents table.ss_Mtimetable th.ss_red {
+	color:#666666;
+}
+/*---- timetable Matrixtimetable END ----*/
+/*---- timetable END ----*/
+
+
+/*---- session STA ----*/
+#ss_containerPop .ss_titleback {
+	background-color: #FFFFFF;
+	color: #000000;
+	border: 1px solid #CCCCCC;
+}
+#ss_containerPop .ss_codebox {
+	background: #999999;
+	border: 1px solid #999999;
+}
+/*---- session END ----*/
+
+
+/*---- cart STA ----*/
+/*---- cart END ----*/
+
+
+/*---- user STA ----*/
+#ss_contents .ss_form table {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #CCCCCC;
+	border-right-style: none;
+	border-bottom-style: none;
+}
+#ss_contents .ss_form .ss_formprivacy th {
+	background-color: #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	font-weight: bold;
+	text-align: left;
+	width: 200px;
+	height: 30px;
+	color: #000000;
+	border-top-style: none;
+	border-left-style: none;
+	padding-left:10px;
+	border-collapse: collapse;
+}
+#ss_contents .ss_form .ss_formprivacy td {
+	background-color: #FFFFFF;
+	border-left-style: none;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	height: 30px;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-top-style: none;
+	border-left-style: none;
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-collapse: collapse;
+}
+/*---- user END ----*/
+
+
+/*---- enquete STA ----*/
+#ss_contents .ss_form table.ss_enquete {
+	border-top:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-collapse: collapse;
+}
+#ss_contents .ss_form .ss_enquete th {
+	background-color: #ffffff;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	color: #000000;
+}
+#ss_contents .ss_form .ss_enquete th.ss_enq {
+	background-color: #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+}
+#ss_contents .ss_form .ss_enquete td {
+	background-color: #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+}
+/*---- enquete END ----*/
+
+
+/*---- payment STA ----*/
+#ss_contents .ss_form p.ss_cardMessage {
+	background: #FFFFFF;
+}
+#ss_contents .ss_form table.ss_cardTable {
+	border-top: 1px solid #cccccc;
+	border-left: 1px solid #cccccc;
+	border-bottom: none;
+	border-right: none;
+}
+/*---- payment END ----*/
+
+
+/*---- billing STA ----*/
+/*---- billing END ----*/
+
+
+/*---- confirm STA ----*/
+#ss_contents .ss_form p.ss_confTitle {
+	border-left:6px double #CCCCCC;
+	font-weight: bold;
+}
+/*---- confirm END ----*/
+
+
+/*---- complete STA ----*/
+/*---- complete END ----*/
+
+
+/*---- bill STA ----*/
+/*---- bill END ----*/
+
+
+/*---- system base STA ----*/
+#ss_contentsNoMenu div.ss_heading01 {
+	margin-bottom: 1.5em;
+	padding: 0px;
+}
+#ss_contentsNoMenu div.ss_heading01 h1 {
+	border-left: 6px solid #CCCCCC;
+	border-right: 6px solid #CCCCCC;
+	clear:both;
+	display:block;
+	font-size:1.4em;
+	letter-spacing:2px;
+	line-height:1.4;
+	margin:0;
+	background-color: #FFFFFF;
+	background-repeat: repeat-y;
+	background-position: left top;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+}
+#ss_userTable {
+	border-top:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-right: none;
+	border-bottom: none;
+}
+#ss_userTable th {
+	background: #FFFFFF;
+	color: #000000;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+#ss_userTable td {
+	background: #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+#ss_loginTable {
+	border-top:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-right: none;
+	border-bottom: none;
+	color:#000000;
+}
+#ss_loginTable th {
+	background: #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+#ss_loginTable td {
+	background: #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-top: none;
+	border-left: none;
+}
+/*---- system base END ----*/
+
+
+/*---- exception(terminate) STA ----*/
+/*---- exception(terminate) END ----*/
+
+
+/*---- mypage STA ----*/
+#ss_myPageBtn li a {
+	background:url('../img/menu_arrow.gif') no-repeat left;
+}
+#ss_myPageBtn li a:hover, #ss_myPageBtn li a:active, #ss_myPageBtn li a:focus {
+	background:url('../img/menu_arrow_on.gif') no-repeat left;
+}
+#ss_contentsNoMenu div.ss_title_h3 {
+	background-image: url('../img/h3.gif');
+}
+#ss_contentsNoMenu h3 {
+	border-left-style: solid;
+	border-left-color: #CCCCCC;
+}
+.ss_myPageTable {
+	border-left-color: #CCCCCC;
+	border-top-color: #CCCCCC;
+	border-right: none;
+	border-bottom: none;
+}
+.ss_myPageTable th {
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	border-top: none;
+	border-left: none;
+	background-color: #FFFFFF;
+	color:#000000;
+}
+.ss_myPageTable td {
+	border-bottom-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-top: none;
+	border-left: none;
+	background: #FFFFFF;
+}
+.ss_preBox ul.ss_note {
+	background:#FFFFFF;
+}
+.ss_myPageTable a {
+	background:url('../img/l_allow.gif') no-repeat left;
+}
+.ss_myPageTable .ss_download a, .ss_myPageTable .download a {
+	background:url('../img/dl_icon.gif') no-repeat left;
+}
+.ss_myPageTable td.ss_bk a {
+	background:url('../img/external.gif') no-repeat right;
+}
+/*---- mypage cancel STA ----*/
+/*---- mypage cancel END ----*/
+/*---- mypage END ----*/
+
+
+/*---- top seminar menu STA ----*/
+#ss_cusBox li {
+	border-right-color: #CCCCCC;
+}
+
+#ss_downTable .ss_down a {
+	background:url('../img/dl_icon.gif') no-repeat left;
+}
+/*---- top seminar menu END ----*/

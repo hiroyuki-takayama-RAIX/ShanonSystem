@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>受講証$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ticket_4.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ticket_4_color.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ticket_print.css" media="print">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<style type="text/css" media="print">
+<!--
+.printBtn {
+	display: none;
+}
+-->
+</style>
+</head>
+<body topmargin="0">
+<div id="ss_Printbtn">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+	  <div> 右の[印刷する]ボタンをクリックすることにより、受講票部分を印刷することが可能です。 </div>
+        <div class="ss_boldred"> 当日はこの受講票で受付確認をいたしますので、忘れずにご持参ください。</div>
+          <div class="ss_boldred"> 受講票を印刷の際は、印刷プレビューで出力を100%にて出力願います。</div></td>
+      <td><div align="right">
+          <input name="print" value="印刷する" onclick="javascript:window.print()" type="button" />
+        </div></td>
+    </tr>
+  </table>
+</div>
+<table width="637" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top">
+      <div class="rightTop"><img src="$FORM{Common.logofile_3}" width="300" height="30">
+        <table width="290" border="0" cellpadding="0" cellspacing="0" class="code">
+          <tr>
+          	<td id="barcord"><img src="$FORM{'barcord_path'}" width="150" height="50"/>
+            </td>
+          </tr>
+          <tr>
+            <td class="ss_name ss_bold">
+            	<div>$FORM{'visitor_company_name'}</div>
+	            <div class="ss_name2 ss_bold">$FORM{'visitor_name1'} $FORM{'visitor_name2'} 様</div>
+            </td>
+          </tr>
+          <tr>
+          	<td><div class="line">
+            <h3 class="application">ご登録内容</h3>
+          </div>
+          <div class="ss_record">$FORM{'record'}</div>
+            </td>
+          </tr>
+        </table>
+      </div></td>
+    <td valign="top" rowspan="2" style="text-align:center;"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/plain_01_02.gif" alt="" width="16" height="480" /></td>
+    <td rowspan="2" valign="top"><div class="leftTop">
+        <div class="attention">
+	  <div class="line">
+        <h3>ご注意</h3>
+	  </div>
+      <p class="seminarNote">
+        本イベントは受講票に印字されたバーコードによりご来場者様の入場を管理しております。
+        <br />
+        ご来場の際には必ず印刷した受講票をご持参ください。<br />
+        <br />
+        当日パスケースをお渡し、会場内では受講票入りのパスケースを必ず身に着けるようお願い致します。<br />
+        受講票お忘れの場合、会場にご入場できません。<br />
+        <br />
+        ①受講票はページサイズに合わせて(A4サイズ)印刷していただき、当日の受付時にご提示下さい。<br />
+        <br />
+        ②受付後、お渡しする専用パスケースに受講票を4つ折りにし、バーコードがケースの正面に見えるように入れてください。<br />
+        <br />
+        $FORM{'Seminar.notes'}
+      </p>
+      </div></td>
+  </tr>
+  <tr>
+    <td colspan="3" style="text-align:center;"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/plain_05.gif" width="633" height="16" /></td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <div class="reference">
+      <div class="line">
+        <h3>お問合わせ</h3>
+      </div>
+      <p class="reference">
+        <p class="ss_bold">$FORM{'Seminar.reference_name'}</p>
+        <p>$FORM{'Seminar.reference_person_in_charge'}</p>
+        <p>$FORM{'Seminar.reference_email'}</p>
+        <p>$FORM{'Seminar.reference_tel'} $FORM{'Seminar.reference_fax'}</p>
+        <p>$FORM{'Seminar.reference_note'}</p>
+      </p>
+    </div>
+    </td>
+    <td valign="top" style="text-align:center;"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/plain_07.gif" alt="" width="16" height="403" /></td>
+    <td valign="top">
+    <div class="access">
+      <div class="line">
+        <h3>アクセス</h3>
+      </div>
+        <p class="accessName ss_bold">$FORM{'Seminar.hall_name'}</p>
+        <p class="accessMap"><img src="$FORM{hole_image}" alt="アクセス地図" width="300px"/></p>
+        <p class="accessAdd">$FORM{'Seminar.hall_zipcode'}$FORM{'Seminar.prefecture_master_id'}$FORM{'Seminar.hall_address'}</p>
+        <p class="accessAdd">$FORM{'Seminar.hall_tel'}</p>
+        <p class="accessNote">$FORM{'Seminar.hall_note'}</p>
+      </div>
+    </td>
+  </tr>
+</table>
+<div id="ss_Printbtn">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+	  <div> 右の[印刷する]ボタンをクリックすることにより、受講票部分を印刷することが可能です。 </div>
+        <div class="ss_boldred"> 当日はこの受講票で受付確認をいたしますので、忘れずにご持参ください。</div>
+          <div class="ss_boldred"> 受講票を印刷の際は、印刷プレビューで出力を100%にて出力願います。</div></td>
+      <td><div align="right">
+          <input name="print" value="印刷する" onclick="javascript:window.print()" type="button" />
+        </div></td>
+    </tr>
+  </table>
+</div>
+<div id="ss_close">
+  <p><a href="javascript:window.close()">×閉じる</a></p>
+</div>
+<!--
+<table width="637" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top"><div class="rightTop"><img src="$FORM{Common.logofile_3}" height="45px">
+      <table width="290" border="0" cellpadding="0" cellspacing="0" class="code">
+          <tr>
+            <td width="290"><div id="barcord"><img src="$FORM{'barcord_path'}" width="200" height="50"/></div></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="name"><strong>$FORM{'visitor_company_name'}</strong></td>
+          </tr>
+          <tr>
+            <td colspan="2"class="name"><strong>$FORM{'visitor_name1'} $FORM{'visitor_name2'} 様</strong></td>
+          </tr>
+        </table>
+        <div class="line">
+          <h3 style="margin-bottom:5px;">ご登録内容</h3>
+          <div class="reference"> $FORM{'record'} </div>
+        </div>
+      </div></td>
+    <td rowspan="2"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/plain_01_02.jpg" alt="" /> &nbsp;</td>
+    <td rowspan="2" valign="top"><div class="leftTop">
+        <div class="line" style="margin-top:140px;">
+          <h3>会場受付</h3>
+          <p class="accessAdd" style="color:#FF0000">■本受講証を四つ折にし、バーコード面を上向きにして会場までご持参願います。</p>
+          <p class="accessAdd">■ご来場当日は受付に本受講証をご提示ください。</p>
+		  <p class="accessAdd">$FORM{'Seminar.memo'}</p>
+        </div>
+        <br>
+      </div></td>
+  </tr>
+  <tr>
+    <td colspan="3" style="text-align:center;"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/plain_05.gif" /> &nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top">
+	<div class="attention">
+	      <div class="line">
+		  <h3>注意事項</h3>
+          <div class="reference">$FORM{'Seminar.notes'}</div>
+          </div>
+    </div>
+	<div class="line">
+          <h3>お問合わせ</h3>
+          <div class="reference">
+          <div class="ss_bold">$FORM{'Seminar.reference_name'}</div>
+          <div>$FORM{'Seminar.reference_email'}</div>
+          <div>$FORM{'Seminar.reference_person_in_charge'}</div>
+          <div>$FORM{'Seminar.reference_tel'} $FORM{'Seminar.reference_fax'}</div>
+          <div>$FORM{'Seminar.reference_address'}</div>
+          <div>$FORM{'Seminar.reference_note'}</div>
+    </div>
+    </div></td>
+    <td valign="top"><img src="__base_seminar_path__/shared/themes/$FORM{theme}/img/plain_07.gif" alt="" /> &nbsp;</td>
+    <td class="line" valign="top"><h3>アクセス</h3>
+          <p class="accessName ss_bold">$FORM{'Seminar.hall_name'}</p>
+          <p class="accessAdd">$FORM{'Seminar.hall_zipcode'}$FORM{'Seminar.prefecture_master_id'}$FORM{'Seminar.hall_address'}</p>
+          <p class="accessAdd">$FORM{'Seminar.hall_tel'}</p>
+          <p class="accessMap"><img src="$FORM{hole_image}" alt="アクセス地図" width="300px"/></p>
+          <p class="accessNote">$FORM{'Seminar.hall_note'}</p></td>
+  </tr>
+</table>-->
+</body>
+</html>

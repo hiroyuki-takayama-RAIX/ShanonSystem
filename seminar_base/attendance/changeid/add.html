@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>パスIDの変更</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/attendance.css" media="all">
+<script type="text/javascript" src="/static/js/base.js"></script>
+<script type="text/javascript">
+function set_status(){
+    var status = document.getElementById('status');
+    var img = document.getElementById('status_img');
+    if(status.value == 1){
+        img.src='__base_seminar_path__/shared/img/ok.jpg';
+    }else if(status.value == 2){
+        img.src='__base_seminar_path__/shared/img/ng.jpg';
+    }
+		else {
+	    img.src='__base_seminar_path__/shared/img/spacer.gif';
+	}
+
+}
+</script>
+<SCRIPT TYPE="text/javascript">
+var JIKAN = 700; /*点滅の間隔。単位ミリ秒。1000で1秒。NN4には反映されません。*/
+
+var mode=0;
+function peachblink(){
+mode=1-mode;
+if(document.getElementById){
+  if (mode == 1){ 
+    document.getElementById("blink1").style.visibility='hidden';
+    document.getElementById("blink2").style.visibility='hidden';
+  } else { 
+    document.getElementById("blink1").style.visibility='visible';
+    document.getElementById("blink2").style.visibility='visible';
+  }
+} else if(document.all) {
+  if (mode == 1){ 
+    document.all("blink1").style.visibility='hidden'; 
+    document.all("blink2").style.visibility='hidden'; 
+  } else {
+    document.all("blink1").style.visibility='visible'; 
+    document.all("blink2").style.visibility='visible'; 
+  }
+}
+setTimeout("peachblink()",JIKAN);
+}
+function submit_attendance(){
+  document.getElementsByName('submit_btn')[0].disabled = true;
+  document.getElementsByName('form1')[0].submit();
+}
+</SCRIPT>
+</head>
+<body class="lead overviewPage" onLoad="document.getElementsByName('ChangeId_D__P__D_anonymous_id_before')[0].focus(); peachblink();">
+<div id="wrapper">
+  <table border="0" cellpadding="0" cellspacing="0" id="headerTable">
+    <tr>
+      <th><a href="/attendance/menu"><img src="__base_seminar_path__/shared/img/back.gif" width="300" height="60" border="0"></a></th>
+    </tr>
+  </table>
+  <form action="$FORM{__baseurl__}attendance/changeid/edit" method="post" name="form1">
+    <div id="contentsArea">
+      <p><img src="__base_seminar_path__/shared/img/btnB.gif" width="300" height="40"></p>
+      <p>
+      <div class="id">パスID(前)</div>
+        <input type="text" name="ChangeId_D__P__D_anonymous_id_before"  notnull="0" onfocus="removeClassName(document.getElementById('input_alert'), 'visible'); removeClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'hidden');" class="barcode" onblur="removeClassName(document.getElementById('input_alert'), 'hidden'); addClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'visible');"  />
+        <div class="txtRed">
+          <div ID="blink1">$FORM{anonymous_id_before_error}</div>
+        </div>
+      </p>
+      <p>
+      <div class="id">パスID(後)</div>
+        <input type="text" name="ChangeId_D__P__D_anonymous_id_after"  notnull="0" onfocus="removeClassName(document.getElementById('input_alert'), 'visible'); removeClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'hidden');" class="barcode" onblur="removeClassName(document.getElementById('input_alert'), 'hidden'); addClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'visible');"  />
+        <div class="txtRed">
+          <div ID="blink2">$FORM{anonymous_id_after_error}</div>
+        </div>
+      </p>
+      <p>
+      <div class="" id="input_alert">フォーカスがはずれています。<br>
+        テキストフィールドをクリックしてください。</div>
+      <div class="input_btn">
+        <button type="button" id="btnA" name="submit_btn" onclick="submit_attendance();">送信</button>
+      </div>
+      <input type="submit" name="submit_base" value="" id="btn_submit" style="visibility:hidden;width:0;height:0;">
+      <div class="txtRed"><img src="__base_seminar_path__/shared/img/spacer.gif" id="status_img">
+      <div class="txtBlue">$FORM{attended_user_data}</div>
+      </div>
+      </p>
+    </div>
+    $FORM{date_regist}
+    <input type="hidden" name="step" value="do_regist">
+    <input type="hidden" name="action" value="$FORM{action}">
+    <input type="hidden" name="status1" value="$FORM{status}" id="status">
+    <script type="text/javascript">
+    set_status();
+    </script>
+    $FORM{Common.all_vars}
+  </form>
+</div>
+<!-- 追加部分開始 -->
+<script language="javascript" type="text/javascript" src="__base_seminar_path__/shared/js/get_code.js"></script>
+<script language="javascript" type="text/javascript">
+    // この関数が定義されていると AttendanceFromAdminの内部で呼ばれます。
+    // codeが入ってきたらすぐsubmitしたい場合などにお使いください
+    function AttendanceFromAdminAfter( form, q ) {
+        window.onload = function() { peachblink(); };
+        form.elements['ChangeId_D__P__D_anonymous_id_after'].focus();
+    }
+    AttendanceFromAdmin();
+</script>
+<!-- 追加部分終わり -->
+</body>
+</html>

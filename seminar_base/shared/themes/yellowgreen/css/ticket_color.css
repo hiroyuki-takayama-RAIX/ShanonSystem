@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* ===== Color Map ===== */
+/*    gray    -> yellowgreen */
+/* 1. \9E9E9E -> #93A603 */
+/* 2. \666666 -> #6B7900 */
+/* 3. \ECECEC -> #DDE4A9 */
+/* 4. \CECECE -> #C3D53F */
+
+/*---- Universal Reset STA ----*/
+/*---- Universal Reset END ----*/
+
+/*---- header STA ----*/
+#ss_header {
+	border-bottom-color: #6B7900;
+}
+/*---- header END ----*/
+
+/*---- ticket STA ----*/
+.ss_list_title {
+	color:#6B7900;
+}
+#ss_record_table table th {
+	background: #DDE4A9;
+}
+h3 {
+	border-left:5px solid  #6B7900;
+}
+/*---- ticket END ----*/

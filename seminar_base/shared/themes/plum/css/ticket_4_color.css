@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* ===== Color Map ===== */
+/*    gray    -> plum    */
+/* 1. \9E9E9E -> #E855DF */
+/* 2. \666666 -> #C520BC */
+/* 3. \ECECEC -> #F6DFF9 */
+/* 4. \CECECE -> #F2ABF0 */
+
+/* CSS Document */
+
+h3{
+	background:#C520BC;
+	border-bottom:1px solid #C520BC;
+	border-top:1px solid #C520BC;
+	border-right:1px solid #C520BC;
+}
+.line{
+	border-left:1px solid #C520BC;
+}

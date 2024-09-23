@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>データダウンロード$FORM{Common.title}</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+<script type="text/javascript">
+// 新しいウィンドウを開いてそのウィンドウにPOSTする
+function post_window(_link) {
+    var frm = document.getElementsByTagName('form')[0];
+    var action = frm.getAttribute('action');
+    frm.setAttribute('target', '_self');
+    frm.setAttribute('action', _link);
+    frm.submit();
+    frm.setAttribute('target', '_top');
+    frm.setAttribute('action', action);
+}</script>
+
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}
+$FORM{Common.body_header}
+<div id="ss_wrapper">
+  <!-- ラッパーSTA -->
+  <form name="form1" action="/public/sponsor/download" autocomplete="off" method="post">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <div id="ss_contentsNoMenu">
+      <div class="ss_heading01">
+        <h1>$FORM{'seminar_title'} 読み取り結果ダウンロード</h1>
+        <!-- /.heading01 -->
+      </div>
+      <div class="ss_txtBoxCen">
+      </div>
+      $FORM{'sponsor_name'} 様　<br>
+      下のダウンロードボタンをクリックして読み取り結果をダウンロードしてください。<br>
+      各ボタンごとに１回だけダウンロードすることができます。<br>
+      再度ダウンロードを行いたい場合は、こちらのページを閉じてから<br>
+      「納品データのお知らせ」メールのパスコード再発行リンクからパスコードを再発行して、<br>
+      再度読み取り結果ダウンロードページを表示し直してください。<br>
+      $FORM{'download_btns'}
+    </div>
+    $FORM{'hidden_params'}
+  </form>
+</div>
+<!-- ラッパーEND -->
+$FORM{Common.body_footer}
+</body>
+</html>

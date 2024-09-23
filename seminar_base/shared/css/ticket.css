@@ -1,0 +1,200 @@
+@charset "utf-8";
+/*---- Universal Reset STA ----*/
+* {
+	padding:0;
+	margin-top: 0px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+body {
+	font-size:0.75em;
+}
+/*---- Universal Reset END ----*/
+
+/*---- header STA ----*/
+#ss_header {
+	position:relative;
+	width:640px;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #666666;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*---- header END ----*/
+
+/*---- ticket STA ----*/
+#ss_Printbtn {
+	padding:10px;
+	background:#eeeeee;
+	width:620px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+#ss_Printbtn table td {
+	line-height:200%;
+}
+#ss_Printbtn table td input {
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+#ss_wrapper {
+	width: 624px;
+	border: 1px solid #a7a4a4;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 10px;
+	padding-right: 8px;
+	padding-bottom: 10px;
+	padding-left: 8px;
+}
+.ss_list_title {
+	font-size:2.4em;
+	font-weight:bold;
+	color:#666666;
+}
+.ss_companyname {
+	font-size:1.25em;
+	line-height:120%;
+	padding-left:30px;
+}
+.ss_name {
+	font-size:1.3em;
+	line-height:120%;
+	font-weight:bold;
+	padding-left:30px;
+}
+#ss_record_table {
+	margin-top: 20px;
+	color: #636363;
+	margin-bottom: 20px;
+}
+#ss_record_table table {
+	margin:0 0 15px;
+	padding:0;
+	border:1px solid #bcb9b9;
+	border-bottom:0px solid #bcb9b9;
+	border-right:0px solid #bcb9b9;
+	margin-top: 20px;
+}
+#ss_record_table table th {
+	background: #ECECEC;
+	padding:5px;
+	text-align:center;
+	border-bottom:1px solid #bcb9b9;
+	border-right:1px solid #bcb9b9;
+	font-weight:normal;
+	color:#000000;
+}
+#ss_record_table table th.day {
+	width:25%;
+}
+#ss_record_table table th.seminar {
+	width:75%;
+}
+#ss_record_table table td {
+	padding:5px;
+	text-align:center;
+	border-bottom:1px solid #bcb9b9;
+	border-right:1px solid #bcb9b9;
+	color:#000000;
+	text-align:left;
+}
+#ss_table td div.ss_h3_decolation {
+	border-bottom:1px solid #666666;
+	line-height:100%;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
+	padding-top: 2px;
+	padding-right: 0;
+	padding-bottom: 2px;
+	padding-left: 0;
+	margin-top: 10px;
+}
+h3 {
+	margin:0;
+	padding:5px 0 5px 6px;
+	border-left:5px solid  #666666;
+	font-weight:bold;
+	font-size:1.2em;
+	color:#333333;
+}
+#ss_table td div {
+	color:#636363;
+	line-height:180%;
+	margin-left: 5px;
+}
+h4 {
+	margin:0 0 10px;
+	padding:5px 0 5px 2px;
+	font-weight:bold;
+	font-size:1.1em;
+	color:#333333;
+	border-bottom:1px solid #cccccc;
+}
+.ss_bold {
+	font-weight:bold;
+}
+.ss_map {
+	padding:0;
+	text-align: center;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 2px;
+}
+.ss_map img {
+	margin:0;
+	padding:3px;
+}
+.ss_boldred {
+	font-weight:bold;
+	color:#FF0000;
+}
+#ss_close {
+	background:#555555 none repeat scroll 0%;
+	color:#FFFFFF;
+	font-size:1em;
+	padding:3px;
+	text-align:center;
+	width:60px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+#ss_close a {
+	color:#FFFFFF;
+}
+table td .leftTop{
+	width:300px;
+	height:480px;
+}
+.h03touroku{
+	margin-bottom:5px;
+}
+table td .rightTop{
+	width:308px;
+	height380px;
+}
+.yotuori{
+	background:#C60400 none repeat scroll 0 0;
+	color:#FFFFFF;
+	font-size:12px;
+	margin:0;
+	padding:5px 3px 4px;
+	text-align:left;
+	width:299px;
+}
+.line{
+	border-left:1px solid #C60400;
+}
+/*---- ticket END ----*/

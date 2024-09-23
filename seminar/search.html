@@ -1,0 +1,28 @@
+<script type="text/javascript" src="/static/js/calendar.js"></script>
+<form action="/public/seminar" method="post" name="search_seminar">
+	$FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+  <div class="ss_heading03">
+    <h3>検索条件<!-- /.heading03 -->
+    </h3>
+  </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="ss_search">
+        <tr>
+          <th scope="row">種別</th>
+          <td>$FORM{seminar_category_master_id}</td>
+          <td><div align="center">指定した条件で検索</div></td>
+        </tr>
+        <tr>
+          <th scope="row">日程</th>
+          <td>$FORM{application_start_day}</td>
+          <td rowspan="2">
+            <div align="center">
+              <input name="Input22" type="image" value="検索" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_sub3.gif" align="middle" />
+            </div></td>
+        </tr>
+        <tr>
+          <th scope="row">フリーワード</th>
+          <td>$FORM{free_word}</td>
+        </tr>
+      </table>
+</form><!-- /template /seminar/search/index.html -->

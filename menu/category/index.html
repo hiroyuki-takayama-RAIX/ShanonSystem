@@ -1,0 +1,12 @@
+    <div id="ss_searchSeminar">
+		<h2>キャンペーンカテゴリ</h2>
+        <form action="/public/seminar" method="get" name="search_seminar">
+        $FORM{Common.all_vars}
+    	<!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+        <p class="ss_allseminar"><input type="submit" value="すべてのキャンペーンを検索" class="ss_btn" /></p>
+		<ul>
+			$FORM{record}
+		</ul>
+		<p><label for="freeword">フリーワード検索</label><input name="free_word" size="50" type="text" /><input type="submit" value="検索" class="ss_btn" /></p>
+		</form>
+	<!-- /#searchSeminar --></div>

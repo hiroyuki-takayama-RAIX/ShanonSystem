@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow,noarchive">
+<title>管理者パスワード再設定</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}$FORM{Common.body_header}
+<div id="ss_wrapper">
+  <div id="ss_contentsNoMenu">
+    <div class="ss_heading01">
+      <h1>管理者パスワード再設定</h1>
+      <!-- /.heading01 -->
+    </div>
+    <div class="ss_txtBoxCen">新しいログインパスワードを半角英数字を含めた8～16文字で入力し、「<strong>再設定する</strong>」ボタンをクリックしてください。</div>
+    <form name="form1" action="/public/admin/changepassword" autocomplete="off" method="post">
+      $FORM{Common.all_vars}
+      <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <div class="ss_preBox">
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" id="ss_loginTable">
+          <tr>
+            <th>ログインID</th>
+            <td>$FORM{login_id}<br>半角英数字のみ使用可</td>
+          </tr>
+          <tr>
+            <th>新しいパスワード</th>
+            <td>$FORM{login_password}<br>半角英数字のみ使用可</td>
+          </tr>
+          <tr>
+            <th>新しいパスワードの確認</th>
+            <td>$FORM{login_password_conf}<br>確認のためにもう一度ご記入下さい</td>
+          </tr>
+        </table>
+      </div>
+      <div class="ss_inputBoxCen">
+        <input type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_re_setting.gif" name="Submit1" tabindex="3" alt="再設定する"/>
+      </div>
+      <input type="hidden" name="code" value="$FORM{code}">
+      <input type="hidden" name="action" value="$FORM{action}" />
+    </form>
+  </div>
+</div>
+$FORM{Common.body_footer}
+</body>
+</html>

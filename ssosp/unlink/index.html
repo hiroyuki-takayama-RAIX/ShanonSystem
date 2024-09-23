@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外部ID連携解除</title>
+  <link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+  <link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/line.css" media="all">
+  <script type="text/javascript" src="/static/js/visitor_util.js"></script>
+  <script type="text/javascript"><!--
+  $FORM{additional_js}
+  //--></script>
+  $FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie} 
+<!-- ヘッダーSTA -->
+$FORM{Common.body_header}
+<!-- ヘッダーEND -->
+<!-- ラッパーSTA -->
+<div id="ss_wrapper">
+  <form action="/public/ssosp/unlink/visitor" autocomplete="off" method="post" name="form1">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <div id="ss_contentsNoMenu">
+      <div class="ss_heading01">
+        <h1>外部ID連携解除</h1>
+        <!-- /.heading01 -->
+      </div>
+      <div class="ss_txtBoxCen">外部ID連携解除を行う場合、以下の送信するボタンを押してください</div>
+      <div class="ss_inputBoxCen">
+        <input type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_transmission.gif" name="Submit1" alt="送信する" />
+      </div>
+    </div>
+  </form>
+  
+  <!-- フッターSTA -->
+  
+  <!-- フッターEND -->
+</div>
+<!-- ラッパーEND -->
+$FORM{Common.body_footer}
+</body>
+</html>

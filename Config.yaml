@@ -1,0 +1,7 @@
+## スマートセミナー デザインテンプレート用設定ファイル ##
+#
+# Url       ... テンプレートを適用するスマートセミナーのURLを指定します。
+#  (例)
+#   Url: https://shanon.smartseminar.jp/
+
+Url: https://trial.smktg.jp/

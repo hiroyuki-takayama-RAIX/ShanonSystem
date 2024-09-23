@@ -1,0 +1,29 @@
+<!-- template confirm/payment.html -->
+<p class="ss_confTitle">お支払い方法</p>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="1" class="ss_formprivacy">
+  <tr>
+    <th>お支払い方法$FORM{notnull_payment_type_master_id}</th>
+    <td>$FORM{payment_type_master_id}&nbsp;</td>
+  </tr>
+<!--「システム設定 クレジットカード情報のサーバ通過：0 : 通過する の場合のみ必要」
+  <tr>
+    <th>カード会社$FORM{notnull_card_company_master}</span></th>
+    <td>$FORM{card_company_master_id}&nbsp;</td>
+  </tr>
+-->
+  <tr>
+    <th>カード番号$FORM{notnull_card_number1}</th>
+    <td>$FORM{card_number1}-$FORM{card_number2}-$FORM{card_number3}-$FORM{card_number4}&nbsp;</td>
+  </tr>
+<!--「システム設定 クレジットカード情報のサーバ通過：0 : 通過する の場合のみ必要」
+  <tr>
+    <th>有効期限$FORM{notnull_expire_month}</th>
+    <td>$FORM{expire_month}月$FORM{expire_year}年</td>
+  </tr>
+  <tr>
+    <th>名義人$FORM{notnull_name}</th>
+    <td>$FORM{name}&nbsp;</td>
+  </tr>
+-->
+</table><!-- /template confirm/payment.html -->

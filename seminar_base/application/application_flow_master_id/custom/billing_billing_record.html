@@ -1,0 +1,31 @@
+<!-- 「新しい請求先を登録する」の項目で必須の変数は入れておく必要があります -->
+<tr>
+  <td><form action="$FORM{__baseurl__}public/application/add/$FORM{application_flow_master_id}" autocomplete="off" method="post">
+  	$FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+      <table width="100%"  border="0">
+        <tr>
+          <td width="20%">$FORM{submit}</td>
+          <td><table width="100%"  border="0">
+              <tr>
+                <td>$FORM{name1}$FORM{name2}($FORM{name1_ka}$FORM{name2_ka})</td>
+              </tr>
+			  <tr>
+                <td>$FORM{company_name}($FORM{company_name_ka})</td>
+              </tr>
+              <tr>
+                <td>〒$FORM{zip1}-$FORM{zip2} $FORM{prefecture_master_id}$FORM{address1}$FORM{address2}</td>
+              </tr>
+              <tr>
+                <td>$FORM{tel}</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      $FORM{id}
+      <input type="hidden" name="action" value="$FORM{action}" />
+    </form></td>
+</tr>
+<tr>
+  <td><hr /></td>
+</tr>

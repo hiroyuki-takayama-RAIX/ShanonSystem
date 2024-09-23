@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>セッション退場受付</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/attendance.css" media="all">
+<script type="text/javascript" src="/static/js/base.js"></script>
+
+<script type="text/javascript">
+function set_status(){
+    var status = document.getElementById('status');
+    var img = document.getElementById('status_img');
+    if(status.value == 1){
+        img.src='__base_seminar_path__/shared/img/ok.jpg';
+    }else if(status.value == 2){
+        img.src='__base_seminar_path__/shared/img/ng.jpg';
+    }
+	else {
+	    img.src='__base_seminar_path__/shared/img/spacer.gif';
+	}
+
+}
+function open_dialog(){
+    addClassName(document.getElementById('mask'), 'filter');
+    removeClassName(document.getElementById('dialog'), 'hidden');
+
+}
+function close_dialog(){
+    var map = {
+        $FORM{session_map}
+    };
+    var session = document.getElementsByName('Attendance::ExitSsAttendance_D__P__D_dialog_session');
+    var selected_session;
+    for (var i=0; i < session.length; i++){
+        if(session[i].checked)
+            selected_session = session[i].value;
+    }
+
+    if (selected_session) {
+        set_ss_target_type(selected_session, map[selected_session]);
+        var presence_info = document.getElementById('presence_info');
+        if (presence_info) {
+            window.location.href = "/attendance/exitssattendance/add?selected_session_id=" + selected_session;
+        }
+    }
+//        alert('selected_session value='+selected_session+' name='+map[selected_session]);
+
+    removeClassName(document.getElementById('mask'), 'filter');
+    addClassName(document.getElementById('dialog'), 'hidden');
+}
+function set_ss_target_type(selected_session, name){
+    var session = document.getElementsByName('Attendance::ExitSsAttendance_D__P__D_dialog_session');
+    for (var i=0; i < session.length; i++){
+        if(session[i].value == selected_session){
+            session[i].checked = true;
+        }
+    }
+
+    document.getElementsByName('Attendance::ExitSsAttendance_D__P__D_ss_target_data_id')[0].value = selected_session;
+    document.getElementById('ss_target_type_name').innerHTML = name;
+	document.getElementsByName('Attendance::ExitSsAttendance_D__P__D_anonymous_id')[0].focus();
+
+    var presence_refresh = document.getElementById('presence_info_refresh');
+    if (presence_refresh) {
+      presence_refresh.href = "/attendance/exitssattendance/add?selected_session_id=" + selected_session;
+    }
+}
+function set_forcus(){
+	document.getElementsByName('Attendance::ExitSsAttendance_D__P__D_anonymous_id')[0].focus();
+}
+
+var JIKAN = 700; /*点滅の間隔。単位ミリ秒。1000で1秒。NN4には反映されません。*/
+
+var mode=0;
+function peachblink(){
+mode=1-mode;
+if(document.getElementById){
+if (mode == 1){ document.getElementById("blink").style.visibility='hidden'; }
+else { document.getElementById("blink").style.visibility='visible'; }
+}
+else if(document.all) {
+if (mode == 1){ document.all("blink").style.visibility='hidden'; }
+else { document.all("blink").style.visibility='visible'; }
+}
+setTimeout("peachblink()",JIKAN);
+}
+function disable_alert(){
+ document.getElementById("status_alert").style.display = "none";
+ document.getElementById("waiting").style.display = "block";
+}
+function submit_attendance(){
+  document.getElementsByName('submit_btn')[0].disabled = true;
+  document.getElementsByName('form1')[0].submit();
+}
+</script>
+</head>
+<body class="lead overviewPage" onLoad="set_ss_target_type($FORM{ss_target_type_default}); document.getElementsByName('Attendance::ExitSsAttendance_D__P__D_anonymous_id')[0].focus(); peachblink();">
+<div id="wrapper">
+  <form action="$FORM{__baseurl__}attendance/exitssattendance/add" method="post" name="form1" autocomplete="off" onSubmit="disable_alert();">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <table border="0" cellpadding="0" cellspacing="0" id="headerTable">
+      <tr>
+        <th><a href="/attendance/menu"><img src="__base_seminar_path__/shared/img/back.gif" width="300" height="60" border="0"></a></th>
+        <td>事前登録チェック$FORM{check_registration}</td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" id="navi">
+      <tr>
+        <th> <div id="ss_target_type_name" class="confirm_form"></div></th>
+        <td><input type="button" name="Submit" value="セッション選択" id="btnA" onClick="open_dialog();">
+        </td>
+      </tr>
+    </table>
+    <div id="contentsArea">
+      <div class="centerbox">セッション退場受付</div>
+      <div class="id">会場ID：$FORM{orig_anonymous_id}</div>
+      <p>
+        <input type="text" name="Attendance::ExitSsAttendance_D__P__D_anonymous_id"  onfocus="removeClassName(document.getElementById('input_alert'), 'visible'); removeClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'hidden');" class="barcode" onblur="removeClassName(document.getElementById('input_alert'), 'hidden'); addClassName(document.getElementById('input_alert'), 'alert'); addClassName(document.getElementById('input_alert'), 'visible');" maxlength="10" />
+      </p>
+      <div class="input_btn">
+        <button type="button" id="btnA" name="submit_btn" onclick="submit_attendance();">送信</button>
+      </div>
+      <input type="submit" name="submit_base" value="" id="btn_submit" style="visibility:hidden;width:0;height:0;">
+      $FORM{presence_info}
+      <div class="" id="input_alert">フォーカスがはずれています。<br>
+        テキストフィールドをクリックしてください。</div>
+      <div class="txtRed" id="status_alert"><img src="__base_seminar_path__/shared/img/spacer.gif" id="status_img">
+        <div ID="blink">$FORM{anonymous_id_error}</div>
+        <div class="txtBlue">$FORM{attended_user_data}</div>
+      </div>
+      <div id="waiting">認証中です。しばらくお待ちください。</div>
+    </div>
+    <div class="dialog hidden" id="dialog">
+      <div id="wrapper2">
+        <div class="dialog-content">$FORM{dialog_session}
+          <div align="center">
+            <input type="button" value="変更" id="btnB" onClick="close_dialog();">
+          </div>
+        </div>
+      </div>
+    </div>
+    $FORM{date_regist}
+    <div id="botan"> </div>
+    <input type="hidden" name="action" value="$FORM{action}">
+    <input type="hidden" name="status1" value="$FORM{status}" id="status">
+    <input type="hidden" name="Attendance::ExitSsAttendance_D__P__D_ss_target_data_id" value="$FORM{default_ss_target_data_id}">
+    <script type="text/javascript">
+    set_status();
+    </script>
+  </form>
+</div>
+</body>
+</html>

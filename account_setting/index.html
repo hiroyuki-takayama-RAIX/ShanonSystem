@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ログイン情報設定</title>
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/css/ss_base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__base_seminar_path__/shared/themes/$FORM{theme}/css/ss_base_color.css" media="all">
+<script type="text/javascript" src="/static/js/visitor_util.js"></script>
+<script type="text/javascript"><!--
+$FORM{additional_js}
+//--></script>
+$FORM{Common.head}
+</head>
+<body>
+$FORM{check_cookie}  $FORM{Common.body_header}
+<div id="ss_wrapper">
+  <!-- ラッパーSTA -->
+  <form name="form1" action="/public/accountsetting" autocomplete="off" method="post">
+    $FORM{Common.all_vars}
+    <!-- CSRF対策 2008-02-08 バグFixリリース v2.19.9 -->
+    <div id="ss_contentsNoMenu">
+      <div class="ss_heading01">
+        <h1>ログイン情報設定</h1>
+        <!-- /.heading01 -->
+      </div>
+      <div class="ss_txtBoxCen">ログイン情報（ログインID、ログインパスワード、秘密の質問、秘密の質問の回答）を設定してください。<br>
+      <!-- 秘密の質問OFFの場合は、「秘密の質問、秘密の質問の回答」文言を上記（）および下記trタグから外してください。-->
+        ※秘密の質問と回答には、覚えやすいものを設定してください。<br>
+        こちらの情報は、パスワードを忘れた際に必要となります。</div>
+      <div class="ss_preBox">
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" id="ss_loginTable">
+          <tr>
+            <th>ログインID</th>
+            <td>$FORM{login_id}</td>
+          </tr>
+          <tr>
+            <th>ログインパスワード</th>
+            <td>$FORM{login_password}</td>
+          </tr>
+          <tr>
+            <th>ログインパスワード確認</th>
+            <td>$FORM{login_password_conf}</td>
+          </tr>
+          <tr>
+            <th>秘密の質問</th>
+            <td>$FORM{secret_question_master_id}</td>
+          </tr>
+          <tr>
+            <th>秘密の質問の回答</th>
+            <td>$FORM{answer_of_secret_question}</td>
+          </tr>
+          <tr>
+            <th><img src="/public/captcha" border="0"></th>
+            <td>$FORM{captcha_entry}<br>
+              画像に表示されている文字をご入力ください。</td>
+          </tr>
+        </table>
+      </div>
+      <div class="ss_inputBoxCen">
+        <input type="image" src="__base_seminar_path__/shared/themes/$FORM{theme}/img/btn_transmission.gif" name="Submit1" tabindex="3" alt="送信する"/>
+      </div>
+    </div>
+    <input type="hidden" name="code" value="$FORM{code}">
+    <input type="hidden" name="action" value="$FORM{action}" />
+  </form>
+</div>
+<!-- ラッパーEND -->
+$FORM{Common.body_footer}
+</body>
+</html>
